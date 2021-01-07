@@ -1,15 +1,23 @@
 import React from "react";
 import { Navbar, Nav, NavDropdown, Row, Col, Container } from "react-bootstrap";
 import "../../Style/navbar.css";
+import { Link } from "react-router-dom";
 import heart from "../../images/heart.jpg";
 import logo from "../../images/logo.png";
-import homePage from "../../images/homePage.jpg";
+import back3 from "../../images/back3.jpg";
 var NavbarBuyer = () => {
   var signout = () => {
     localStorage.removeItem("token");
   };
   return (
-    <div>
+    <div
+      style={{
+        backgroundImage: `url(${back3})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        height: "500px",
+      }}
+    >
       <Container className="justify-content-md-center">
         <Row>
           {/* <Col xs lg="3">
@@ -37,48 +45,69 @@ var NavbarBuyer = () => {
             }}
           />
         </Row>
-        <hr style={{ marginLeft: "100px", border: "0.5px solid #826105" }}></hr>
-        <Row style={{ marginLeft: "90px" }}>
-          <Col style={{ padding: "0px 20px 0px 150px" }}>
-            <a
-              href="/buyer/food"
+        <hr
+          style={{ marginLeft: "100px", border: "0.5px solid  #FCFBED" }}
+        ></hr>
+        <Row>
+          <Col style={{ color: "#FCFBED" }}>
+            <NavDropdown
+              title="Category"
+              id="collasible-nav-dropdown"
+              color="#FCFBED"
               style={{
-                color: "#826105",
-                fontSize: "25px",
+                margin: "0px 0px 0px 80px",
+                fontSize: "20px",
+                color: "#FCFBED",
+                padding: "0px 0px 0px 100px ",
                 fontFamily: "Yanone Kaffeesatz",
+                fontSize: "25px",
               }}
             >
-              Food
-            </a>
+              {/* <NavDropdown.Item href="/notification">View Notifications</NavDropdown.Item> */}
+              <NavDropdown.Item
+                href="/buyer/food"
+                style={{ fontFamily: "Yanone Kaffeesatz" }}
+              >
+                Food
+              </NavDropdown.Item>
+              <NavDropdown.Item
+                href="/buyer/clothes"
+                style={{ fontFamily: "Yanone Kaffeesatz" }}
+              >
+                Clothes
+              </NavDropdown.Item>
+              <NavDropdown.Item
+                href="/buyer/babyproducts"
+                style={{ fontFamily: "Yanone Kaffeesatz" }}
+              >
+                Baby Products
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/buyer/accessories">
+                Accessories
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+            </NavDropdown>
           </Col>
-          <Col style={{ padding: "0px 20px 0px 20px" }}>
+          <Col style={{ padding: "0px 20px 0px 100px" }}>
             <a
-              href="/buyer/accessories"
+              href="/"
               style={{
-                color: "#826105",
+                color: "#FCFBED",
                 fontSize: "25px",
                 fontFamily: "Yanone Kaffeesatz",
+                padding: "0px 180px ",
               }}
             >
-              Accessories
+              Home
             </a>
           </Col>
-          <Col style={{ padding: "0px 20px 0px 20px" }}>
-            <a
-              href="/buyer/babyproducts"
-              style={{
-                color: "#826105",
-                fontSize: "25px",
-                fontFamily: "Yanone Kaffeesatz",
-              }}
-            >
-              Baby Stuff
-            </a>
-          </Col>
+          <Col style={{ padding: "0px 20px 0px 20px" }}></Col>
           <Col>
             <NavDropdown
+              color="#FCFBED"
               id="collasible-nav-dropdown"
               style={{ margin: "0px 80px 0px 0px" }}
+              // title=<i class="fas fa-bars fa-2x"></i>
             >
               {/* <NavDropdown.Item href="/notification">View Notifications</NavDropdown.Item> */}
               <NavDropdown.Item href="/settings">Setting</NavDropdown.Item>
