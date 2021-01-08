@@ -7,7 +7,8 @@ import $ from "jquery";
 import { Control, Form } from "react-redux-form";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import buyer2 from "../images/buyer2.jpg";
-
+import GoogleLogin from "react-google-login";
+import FacebookLogin from "react-facebook-login";
 
 var mapStateToProps = (state) => {
   console.log(state, "staaaaat");
@@ -32,6 +33,69 @@ var mapDispatchToProps = (dispatch) => {
       dispatch(action);
     },
   };
+};
+const responseFacebook = (response) => {
+  console.log(response);
+  var obj = {};
+  obj.email = response.email;
+  obj.password = "";
+  obj.userName = response.name;
+  obj.location = "";
+  obj.phoneNumber = "";
+  console.log(obj);
+  $.ajax({
+    url: "http://127.0.0.1:8000/buyer/signup",
+    method: "POST",
+    data: JSON.stringify(obj),
+    contentType: "application/json",
+    success: function (response) {
+      console.log("POST sent successfully!");
+      localStorage.setItem("token", JSON.stringify(response));
+      console.log(JSON.parse(localStorage.getItem("token")));
+      var tokenObj = JSON.parse(localStorage.getItem("token"));
+      if (tokenObj.type === "buyer") window.location = "/home";
+      // if the user if a seller
+      if (tokenObj.type === "seller")
+        window.location = `/seller/profile/${tokenObj["id"]}`;
+    },
+    error: function (err) {
+      console.log(err);
+      alert("email already exist");
+      window.location = "/login";
+    },
+  });
+};
+var responseGoogle = (response) => {
+  console.log(response, "google response");
+  console.log(response.profileObj, "profiiile");
+  var obj = {};
+  obj.email = response.profileObj["email"];
+  obj.password = "";
+  obj.userName = response.profileObj["givenName"];
+  obj.location = "";
+  obj.phoneNumber = "";
+  console.log(obj);
+  $.ajax({
+    url: "http://127.0.0.1:8000/buyer/signup",
+    method: "POST",
+    data: JSON.stringify(obj),
+    contentType: "application/json",
+    success: function (response) {
+      console.log("POST sent successfully!");
+      localStorage.setItem("token", JSON.stringify(response));
+      console.log(JSON.parse(localStorage.getItem("token")));
+      var tokenObj = JSON.parse(localStorage.getItem("token"));
+      if (tokenObj.type === "buyer") window.location = "/home";
+      // if the user if a seller
+      if (tokenObj.type === "seller")
+        window.location = `/seller/profile/${tokenObj["id"]}`;
+    },
+    error: function (err) {
+      console.log(err);
+      alert("email already exist");
+      window.location = "/login";
+    },
+  });
 };
 
 //make sign up buyer component
@@ -337,8 +401,22 @@ function SignUpBuyer(props) {
                     Already have an acount ? Login
                   </a>
                 </Link> */}
-                {/* <GoogleLogin />
-                <Facebook /> */}
+                <GoogleLogin
+                  clientId="618615503064-dlp8abcbs4u3l9gd0r3g41hrdigirah7.apps.googleusercontent.com"
+                  buttonText="Sign Up"
+                  onSuccess={responseGoogle}
+                  onFailure={responseGoogle}
+                  cookiePolicy={"single_host_origin"}
+                  onClick={responseGoogle}
+                />
+                <FacebookLogin
+                  appId="3491517994290436"
+                  autoLoad={true}
+                  fields="name,email,picture"
+                  callback={responseFacebook}
+                  cssClass="my-facebook-button-class"
+                  icon={<i class="fab fa-facebook-square"></i>}
+                />
               </div>
             </Form>
           </div>

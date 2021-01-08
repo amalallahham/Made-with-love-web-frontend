@@ -3,7 +3,9 @@ import { Button, Card, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import $ from "jquery";
-
+// var componentDidMount=() =>{
+//   this.deleteItems();
+// }
 const ListItems = (props) => {
   var deleteItems = (pk, i) => {
     console.log(i);
