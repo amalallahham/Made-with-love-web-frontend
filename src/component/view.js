@@ -14,6 +14,11 @@ import logo1 from "../images/logo1.png";
 
 // }
 function View() {
+  var hover=(e)=>{
+
+      e.target.style.transform = "scale(1.2)";
+    
+  }
   return (
     <div>
       <div
@@ -150,8 +155,12 @@ function View() {
             <Col style={{ padding: "0px 300px 0px 0px" }}>
               <Card style={{ width: "22rem" }}>
                 <Card.Img
-                  variant="top"
+                  variant="top" 
+                  
+                  onMouseEnter={(e) =>  e.target.style.transform = "scale(1.2)"}
+                  onMouseLeave={(e) =>  e.target.style.transform = "scale(1)"}
                   src="https://i0.wp.com/www.althemist.com/zass/wp-content/uploads/2017/03/baby_cat.jpg?resize=350%2C350&ssl=1"
+                
                 />
                 <Card.Body>
                   <Card.Title>
