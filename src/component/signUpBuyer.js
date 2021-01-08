@@ -2,21 +2,13 @@ import React from "react";
 import { connect } from "react-redux";
 import loogo from "../images/loogo.png";
 import { Card, NavDropdown, Row, Col, Container } from "react-bootstrap";
-// import store from './Store';
-// import ReactDOM from "react-dom";
 import down from "../images/down.jpg";
 import $ from "jquery";
 import { Control, Form } from "react-redux-form";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import GoogleLogin from "./social/social/google/google";
-import Facebook from "./social/social/facebook/facebook";
-// import { storage } from '../firebase/index';
-
 import buyer2 from "../images/buyer2.jpg";
 
-// import Social from "./social";
 
-//call the state I need from the store
 var mapStateToProps = (state) => {
   console.log(state, "staaaaat");
   return {

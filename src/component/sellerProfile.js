@@ -1,9 +1,7 @@
 import React  from "react";
-// import ReactDOM from "react-dom";
 import $ from "jquery";
 import { Container, CardGroup, Card, Row, Col, Button } from 'react-bootstrap';
 import { Link } from "react-router-dom";
-// import { useDispatch } from "react-redux";
 import NavbarSeller from './layout/NavbarSeller';
 import ListItems from "./listItems";
 const styles = {

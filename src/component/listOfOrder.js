@@ -1,12 +1,7 @@
-import React, { Component} from "react";
-// import ReactDOM from 'react-dom';   
+import React, { Component} from "react";  
 import $ from "jquery";
-// import { Form,Button  } from 'react-bootstrap';
 import { Card, Row , Col} from 'react-bootstrap';
 import NavbarSeller from './layout/NavbarSeller'
-// import StripeCheckout from "react-stripe-checkout";
-
-
 
 export default class listOfOrder extends Component {
   constructor(props){

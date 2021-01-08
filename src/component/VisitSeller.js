@@ -3,7 +3,6 @@ import $ from "jquery";
 import { Container, CardGroup, Card, Row, Col } from "react-bootstrap";
 import VisitItems from "./VisitItem";
 import NavbarSeller from "./layout/NavbarSeller";
-import { useParams } from "react-router-dom";
 const styles = {
   card: {
     backgroundColor: "#B7E0F2",

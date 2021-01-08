@@ -6,7 +6,7 @@ import $ from "jquery";
 import { Link } from "react-router-dom";
 import logo from "../images/logo.png";
 import heart from "../images/heart.jpg";
-import { Card, NavDropdown, Row, Col, Container } from "react-bootstrap";
+import { Card, Row, Col, Container } from "react-bootstrap";
 import Seller from "../images/Seller.jpg";
 import { storage } from "../firebase/index";
 import down from "../images/down.jpg";

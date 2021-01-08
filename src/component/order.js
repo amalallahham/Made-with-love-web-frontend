@@ -3,7 +3,7 @@ import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 import { toast } from "react-toastify";
 import NavbarBuyer from "./layout/NavbarBuyer.js";
-import React, { Component } from "react";
+import React from "react";
 import GoogleMapReact from "google-map-react";
 import styled from "styled-components";
 import $ from "jquery";
@@ -213,12 +213,6 @@ class Order extends React.Component {
   }
   render() {
     const { places, mapApiLoaded, mapInstance, mapApi } = this.state;
-    // console.log('this.props', this.props.location.info.id)
-    // var x;
-    //   {this.state.data ?  x = <Redirect to={'/seller/profile'}/>
-    //   :'not'}
-    //   console.log(this.props,'proooooops')
-    // console.log(this.props.location.info.price, 'priiiiiiiice')
 
     if ((this.state.show = true))
       var map = (
