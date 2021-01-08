@@ -108,9 +108,9 @@ class GoogleLogin extends Component {
         src={google}
         title="google login"
         alt="google"
-        width='50px'
-        height='50px'
-        margin='0 auto'
+        width="60px"
+        height="50px"
+        style={{ margin: "20px 250px 0px 250px" }}
         onClick={() => this.googleLogin()}
       />
     );

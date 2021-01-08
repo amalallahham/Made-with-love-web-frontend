@@ -494,8 +494,8 @@ export default function Home(props) {
       <br />
       <br />
       <br />
-      <Container>
-        <div>
+      <div>
+        <Container>
           <Row>
             <Col style={{ padding: "0px 200px 0px 0px" }}>
               <Card style={{ width: "25rem" }}>
@@ -519,7 +519,6 @@ export default function Home(props) {
                 />
                 <Card.Body>
                   <Card.Title>
-                    
                     His Little Hands Stole My Heart, His Little Feet Ran Away
                     With it.
                   </Card.Title>
@@ -541,8 +540,8 @@ export default function Home(props) {
               </Card>
             </Col>
           </Row>
-        </div>
-      </Container>
+        </Container>
+      </div>
       <div
         style={{
           width: "100%",
