@@ -1,7 +1,10 @@
 import $ from 'jquery';
 import React, { useState ,useEffect} from "react";
 import { Control, Form } from 'react-redux-form';
-import { storage } from '../firebase';
+import app from './fireConfig';
+import NavbarSeller from "./layout/NavbarSeller.js";
+
+var storage = app.storage();
 function EditProfile (props)  {
   console.log("caaaat",props)
   const category = props.location.info.category

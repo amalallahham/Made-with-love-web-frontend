@@ -8,11 +8,11 @@ import { Control, Form } from "react-redux-form";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import GoogleLogin from "./social/social/google/google";
 import Facebook from "./social/social/facebook/facebook";
-// import { storage } from '../firebase/index';
+import app from './fireConfig';
 import NavBar from "./layout/Navbar";
 // import Social from "./social";
 import LoginGo from "./social/google/loginGo";
-
+var storage = app.storage();
 //call the state I need from the store
 var mapStateToProps = (state) => {
   console.log(state, "staaaaat");

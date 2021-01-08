@@ -3,9 +3,26 @@ import { connect } from 'react-redux';
 import { Control, Form } from "react-redux-form";
 import { useState } from "react";
 import $ from "jquery";
+import app from './fireConfig';
 
-import { storage } from '../firebase/index';
 import NavbarSeller from './layout/NavbarSeller'
+// import { BrowserRouter as Router, Link } from 'react-router-dom';
+import {storage} from './fireConfig';
+var mapStateToProps = (state) => {
+  return {
+    email: state.reducer.email,
+    password: state.reducer.password,
+    storeName: state.reducer.storeName,
+    category: state.reducer.category,
+    description: state.reducer.description,
+    location: state.reducer.location,
+    delieveryTime: state.reducer.deliveryOrder,
+    url: state.reducer.image
+  }
+}
+
+
+
 // import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 var action = { type: 'INPUT_CANGE', text: '' }

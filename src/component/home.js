@@ -1,5 +1,5 @@
 import React from "react";
-import Carousel from "react-bootstrap/Carousel";
+import $ from "jquery";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -7,6 +7,8 @@ import rose from "../images/rose.png";
 import NavbarSeller from "./layout/NavbarSeller";
 import NavbarBuyer from "./layout/NavbarBuyer";
 import down from "../images/down.jpg";
+import app from "./fireConfig"
+import { useState , useEffect } from "react";
 var action = { type: "food_category" };
 var actionclothes = { type: "clothes_category" };
 var actionbaby = { type: "babyshower_category" };
@@ -64,11 +66,104 @@ const getcategoryacc = () => {
 // }
 
 export default function Home(props) {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  const [data, setData] = useState([]);
+  const [populer, setData1] =useState([])
+
+  useEffect(()=>{
+      var max=0;
+    var maxId
+    
+    var database = app.database().ref('notification')
+  var superStore ;
+  database.once("value", function(snapshot) {
+  
+    snapshot.forEach(function(childSnapshot) {
+      childSnapshot.forEach(function(child) {
+        // if the store id exist in firebase  increment number of orders
+       
+          var x =Number(child.val())
+          if(x>= max ){
+            max=x;
+            maxId = child.key
+          }
+  });
+   
+  })
+ superStore = maxId;
+  console.log(maxId, "maaxxx")
+  $.ajax({
+    method:'GET',
+    url: 'http://127.0.0.1:8000/seller/profile/'+maxId,
+    contentType: "application/json",
+    headers:{'Authorization':JSON.parse(localStorage.getItem('token'))['token']},
+
+    success:function(res){
+      console.log(res)
+    setData(res)
+    },
+    error: function(err){
+     //  setData1('noooo')
+     //  console.log(data1)
+    }
+  })
+  })
+    
+  $.ajax({
+    method:'GET',
+    url: 'http://127.0.0.1:8000/populer',
+    contentType: "application/json",
+    headers:{'Authorization':JSON.parse(localStorage.getItem('token'))['token']},
+
+    success:function(res){
+      console.log(res)
+      //filter descendingly 
+      var data =JSON.parse( res).sort(function(a, b) {
+        return (b.fields.review) - (a.fields.review);
+    }) 
+     
+    data = data.slice(0,4)
+    setData1(data)
+
+    },
+    error: function(err){
+     //  setData1('noooo')
+     //  console.log(data1)
+    }
+  })
+
+
+},[data]
+)
+
+
+console.log (populer)
   var tokenObj = JSON.parse(localStorage.getItem("token"));
   console.log(tokenObj["type"]);
   if (tokenObj.type === "buyer") var nav = <NavbarBuyer />;
   if (tokenObj.type === "seller") var nav = <NavbarSeller />;
+//   var database = app.database().ref('notification')
+//   var superStore ;
+//   database.once("value", function(snapshot) {
+//     var max=0;
+//     var maxId
+//     snapshot.forEach(function(childSnapshot) {
+//       childSnapshot.forEach(function(child) {
+//         // if the store id exist in firebase  increment number of orders
+       
+//           var x =Number(child.val())
+//           if(x>= max ){
+//             max=x;
+//             maxID = child.key
+//           }
+//   });
+   
+//   })
+//  superStore = maxId;
+  
+//   })
+
+
   return (
     <div
       style={{

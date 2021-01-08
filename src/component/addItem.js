@@ -1,8 +1,10 @@
 import $ from "jquery";
 import React, { useState } from "react";
 import { Control, Form } from "react-redux-form";
-import { storage } from "../firebase";
 import NavbarSeller from "./layout/NavbarSeller";
+import {storage} from "./fireConfig.js";
+
+
 function ItemForm(props) {
   console.log("caaaat", props.location.info);
   const [url, setUrl] = useState("");
@@ -42,7 +44,7 @@ function ItemForm(props) {
       "state_changed",
       (snapshot) => {},
       (error) => {
-        console.log(error);
+        console.log(error ,'lll');
       },
       () => {
         storage

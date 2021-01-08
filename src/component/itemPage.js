@@ -3,9 +3,13 @@ import {Link } from 'react-router-dom'
 import $ from 'jquery';
 import NavbarBuyer from "./layout/NavbarBuyer.js";
 import { Card, Col} from 'react-bootstrap';
+import axios from 'axios';
+import app from './fireConfig'
 export default class ItemPage extends React.Component {
     constructor(props){
         super(props);
+        this.database = app.database().ref('comments')
+
         this.state={
             addComment:"", 
             data :[]
@@ -20,6 +24,7 @@ export default class ItemPage extends React.Component {
             contentType: "application/json",
             success: (data) => {
            that.setState({data: data})
+           console.log(data)
               
            },
             error: (err) => { console.log(err) }
@@ -57,12 +62,43 @@ export default class ItemPage extends React.Component {
               contentType: "application/json",
               success: (user) => {
                 
-                console.log( user.username, "username");
-                var data =  that.state.data
-                data.push({fields:{comment:comment.text, idbuyer:user.username} })
-                that.setState({
-                    data : data
-                })
+                // console.log( user.username, "username");
+                // var data =  that.state.data
+                // data.push({fields:{comment:comment.text, idbuyer:user.username,render:true} })
+                // that.setState({
+                //     data : data
+                // })
+                $.ajax({
+                    url: `http://127.0.0.1:8000/getcomments/${this.props.location.info.item['pk']}`,
+                    method: "GET", 
+                    contentType: "application/json",
+                    success: (data) => {
+                   that.setState({data: data})
+                   console.log(data)
+                         //Notification 
+          // var urlRef = that.database;
+          // urlRef.once("value", function(snapshot) {
+          //   var exist = false ; 
+          //   snapshot.forEach(function(childSnapshot) {
+          //     childSnapshot.forEach(function(child) {
+          //       // if thebuyer id exist in firebase  increment number of orders
+          //       if(Number(child.key) === JSON.stringify(localStorage.getItem("token"))["id"]){
+          //         exist = true ; 
+          //         console.log(typeof  child.val() , child.val())
+          //         var x =Number(child.val()) +1
+          //         console.log(x)
+          //         that.database.child(childSnapshot.key).set({[child.key]: x})  }
+          // });
+           
+          // })
+          // // if the store id does nto exist in firebase create it and set it to 1 (first order)
+          //  if ( !exist ){
+          //   urlRef.push({[that.props.location.info.storeId] : 1 })
+          //  }
+          // })      
+                   },
+                    error: (err) => { console.log(err) }
+                  })
 
 
                 
@@ -70,9 +106,34 @@ export default class ItemPage extends React.Component {
               error: (err) => { console.log(err) }
             })
       }
+
+deleteComment(comment,i){
+    var that = this
+console.log(comment)
+console.log("clicked")
+axios.delete(' http://127.0.0.1:8000/deleteComment/'+comment)
+          .then(response => { console.log(response.data) 
+            $.ajax({
+                url: `http://127.0.0.1:8000/getcomments/${this.props.location.info.item['pk']}`,
+                method: "GET", 
+                contentType: "application/json",
+                success: (data) => {
+               that.setState({data: data})
+               console.log(data)
+                  
+               },
+                error: (err) => { console.log(err) }
+              })
+            })
+    
+          
+}
+     
+
 render () {
     //for the input comment 
-   if(JSON.parse(localStorage.getItem('token'))['type']  === 'buyer' || JSON.parse(localStorage.getItem('token'))['id'] ===  this.props.location.info.item['fields']['store'] ){
+    console.log(this.props.location.info.item['fields']['storeId'], 'idddddd')
+   if(JSON.parse(localStorage.getItem('token'))['type']  === 'buyer' || JSON.parse(localStorage.getItem('token'))['id'] ===  this.props.location.info.item['fields']['storeId'] ){
        console.log(this.props.location.info.item['pk'])
        var com = <div><input type="comment" class="form-control"  id="exampleInputComment" name='addComment'  onChange={this.onChangeHandle.bind(this)} aria-describedby="emailHelp" placeholder="Add Comment"  style ={{width:'200px'}}></input>
        <button type="button" class="btn btn-danger" style ={{margin :'-50px 100px 0px 250px'}} onClick={this.submitHandle.bind(this)}>Comment</button></div>
@@ -130,9 +191,15 @@ if(JSON.parse(localStorage.getItem('token'))['type']  === 'buyer' ){
                  <div style={{borderTop:"solid Lightgray 1px"}}><br/>
                  {com}
                         { this.state.data[0]? this.state.data.map((comment,i)=>{
-                            return  <div><div style={{border:"solid Lightgray 1px", borderRadius:"4px", padding:"20px"}}>
-                                 <h3> {comment['fields']['idbuyer']}</h3>
-                                 <h5> {comment['fields']['comment']}</h5>
+                            // delete icon for the one who wrote comment and for the seller of the item 
+
+                                 if (JSON.parse(localStorage.getItem('token'))["id"] === comment['fields'].idbuyer||JSON.parse(localStorage.getItem('token'))["id_store"] === comment['fields'].idbuyer || JSON.parse(localStorage.getItem('token'))["id"] === comment['fields'].idstore){
+                                    // var index=i;
+                                    var remove = <i class="fas fa-trash-alt"  onClick={this.deleteComment.bind(this, comment.pk,i)} ></i>}
+                                 
+                            return  <div key = {i}><div style={{border:"solid Lightgray 1px", borderRadius:"4px", padding:"20px"}}>
+                                 <h3> {comment['fields']['buyer']}</h3>
+                                 <h5> {comment['fields']['comment']} {remove}</h5>
                              </div><br/></div>
                          }): null}
                    
