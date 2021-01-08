@@ -131,7 +131,7 @@ export default function Home(props) {
                           borderRadius: "10px",
                         }}
                         className="d-block w-100"
-                        src="https://i1.wp.com/digital-photography-school.com/wp-content/uploads/2014/05/02_Tip01_45_vs_90_Tacos.jpg?w=600&h=1260&ssl=1"
+                        src="https://images.unsplash.com/photo-1506224477000-07aa8a76be20?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
                         alt="Third slide"
                         width="500px"
                         height="400px"
@@ -147,7 +147,7 @@ export default function Home(props) {
                           borderRadius: "10px",
                         }}
                         className="d-block w-100"
-                        src="https://static2.bigstockphoto.com/0/8/3/large1500/380596804.jpg"
+                        src="https://images.unsplash.com/photo-1448131063153-f1e240f98a72?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1448&q=80"
                         alt="Third slide"
                         width="500px"
                         height="400px"
@@ -163,7 +163,7 @@ export default function Home(props) {
                           borderRadius: "10px",
                         }}
                         className="d-block w-100"
-                        src="https://thumbs.dreamstime.com/b/cinnamon-rolls-sinabon-made-home-lying-grey-table-homemade-cakes-brown-wooden-sweet-141014176.jpg"
+                        src="https://images.unsplash.com/photo-1559622214-f8a9850965bb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1402&q=80"
                         width="500px"
                         height="400px"
                         alt="Third slide"
@@ -207,7 +207,7 @@ export default function Home(props) {
                           borderRadius: "10px",
                         }}
                         className="d-block w-100"
-                        src="https://i1.wp.com/digital-photography-school.com/wp-content/uploads/2014/05/02_Tip01_45_vs_90_Tacos.jpg?w=600&h=1260&ssl=1"
+                        src="https://images.unsplash.com/photo-1506224477000-07aa8a76be20?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
                         alt="Third slide"
                         width="800px"
                         height="900px"
@@ -275,14 +275,14 @@ export default function Home(props) {
                       dispatch(getcategoryclothes());
                     }}
                   >
-                    <Carousel.Item interval={1000} className="col-sm-6">
+                    <Carousel.Item interval={1000}>
                       <img
                         style={{
                           border: "solid  white 3px",
                           borderRadius: "10px",
                         }}
                         className="d-block w-100"
-                        src="https://www.next.co.uk/nxtcms/resource/blob/804278/b27903a48e38e6e0c04a077af12851f2/next-girls--bridesmaid-dresses-data.jpg"
+                        src="https://images.unsplash.com/photo-1534337711732-1c9ae62389e2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80"
                         width="500px"
                         height="400px"
                         alt="First slide"
@@ -298,7 +298,7 @@ export default function Home(props) {
                           borderRadius: "10px",
                         }}
                         className="d-block w-100"
-                        src="https://www.landsend.com/article/best-work-from-home-clothes-men/images/feat-m.jpg"
+                        src="https://images.unsplash.com/photo-1603321582010-d342bd5a2e07?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80"
                         width="500px"
                         height="400px"
                         alt="Third slide"
@@ -314,7 +314,7 @@ export default function Home(props) {
                           borderRadius: "10px",
                         }}
                         className="d-block w-100"
-                        src="https://media.istockphoto.com/photos/women-clothes-hanging-on-hangers-clothing-rails-fashion-design-picture-id916092484?k=6&m=916092484&s=612x612&w=0&h=tUKYM82W1Vecsjeat6rl6kTnq7iCFq0JYhI2uR3VxMU="
+                        src="https://images.unsplash.com/photo-1560060141-7b9018741ced?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=499&q=80"
                         width="500px"
                         height="400px"
                         alt="Third slide"
@@ -361,7 +361,7 @@ export default function Home(props) {
                           borderRadius: "10px",
                         }}
                         className="d-block w-100"
-                        src="https://st3.depositphotos.com/3737897/15110/i/1600/depositphotos_151106036-stock-photo-clothing-and-accessories-for-women.jpg"
+                        src="https://images.unsplash.com/photo-1521120098171-0400b4ec1319?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8YWNjZXNzb3JpZXN8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
                         width="500px"
                         height="400px"
                         alt="First slide"
@@ -377,7 +377,7 @@ export default function Home(props) {
                           borderRadius: "10px",
                         }}
                         className="d-block w-100"
-                        src="https://previews.123rf.com/images/belchonock/belchonock1802/belchonock180292570/96250582-stylish-women-accessories-on-wooden-background.jpg"
+                        src="https://images.unsplash.com/photo-1519431458145-1ca3d5ccd68e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Nnx8YWNjZXNzb3JpZXN8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
                         width="500px"
                         height="400px"
                         alt="Third slide"
@@ -393,9 +393,9 @@ export default function Home(props) {
                           borderRadius: "10px",
                         }}
                         className="d-block w-100"
-                        src="https://gedaramade.com/wp-content/uploads/2020/11/GiftNfab-natural-stone-hand-made-bracelets-on-GedaraMade-372x400.jpg"
+                        src="https://images.unsplash.com/photo-1551026965-10a65509886d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=716&q=80"
                         width="500px"
-                        height="300px"
+                        height="400px"
                         alt="Third slide"
                       />
                       <Carousel.Caption>
@@ -432,17 +432,17 @@ export default function Home(props) {
                       dispatch(getcategorybaby());
                     }}
                   >
-                    <Carousel.Item interval={1000}>
+                    <Carousel.Item interval={500}>
                       <img
                         style={{
                           border: "solid  white 3px",
                           borderRadius: "10px",
                         }}
                         className="d-block w-100"
-                        src="https://www.stylishboard.com/wp-content/uploads/2013/05/fi3.jpg"
+                        src="https://images.unsplash.com/photo-1565058528605-670489ab6f6c?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTd8fGJhYnklMjAlMjB3b29sfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
                         width="500px"
                         height="400px"
-                        alt="First slide"
+                        alt="Third slide"
                       />
                       <Carousel.Caption>
                         <h3>Category Baby products</h3>
@@ -455,7 +455,7 @@ export default function Home(props) {
                           borderRadius: "10px",
                         }}
                         className="d-block w-100"
-                        src="https://hipdysplasia.org/wp-content/uploads/2020/05/learn-about-cause.jpg"
+                        src="https://images.unsplash.com/photo-1560506840-ec148e82a604?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mjd8fGJhYnklMjBjbG90aGVzfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
                         width="500px"
                         height="400px"
                         alt="Third slide"
@@ -464,16 +464,17 @@ export default function Home(props) {
                         <h3>Category Baby productsl</h3>
                       </Carousel.Caption>
                     </Carousel.Item>
-                    <Carousel.Item>
+
+                    <Carousel.Item interval={500}>
                       <img
                         style={{
                           border: "solid  white 3px",
                           borderRadius: "10px",
                         }}
                         className="d-block w-100"
-                        src="https://ae01.alicdn.com/kf/H30992dcc27d7495c8498858f9b357886E/2019-Baby-Kids-Winter-Warm-Clothes-Newborn-Baby-Boy-Girl-Children-s-Solid-Hooded-Sweater-3D.jpg"
+                        src="https://i1.wp.com/dadfixeseverything.com/wp-content/uploads/2019/01/wash_baby_clothes.jpg?resize=600%2C400&ssl=1"
                         width="500px"
-                        height="00px"
+                        height="400px"
                         alt="Third slide"
                       />
                       <Carousel.Caption>
@@ -630,272 +631,3 @@ export default function Home(props) {
     </div>
   );
 }
-
-// <div>
-//         <Container>
-//           <Row>
-//             <Col>
-//               <div className="col-sm-12">
-//                 <div
-//                   className="card"
-//                   style={{
-//                     border: "solid  white 2px",
-//                     width: "400px",
-
-//                     cursor: "pointer",
-//                     marginTop: "-350px",
-//                     boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.6)",
-//                   }}
-//                 >
-//                   <Link to="/buyer/food">
-//                     <Carousel
-//                       onClick={() => {
-//                         console.log("clickeeed");
-//                         dispatch(getcategoryfood());
-//                       }}
-//                     >
-//                       <Carousel.Item interval={500}>
-//                         <img
-//                           className="d-block w-100"
-//                           src="https://i1.wp.com/digital-photography-school.com/wp-content/uploads/2014/05/02_Tip01_45_vs_90_Tacos.jpg?w=600&h=1260&ssl=1"
-//                           alt="Third slide"
-//                         />
-//                         <Carousel.Caption>
-//                           <h3>Category Food</h3>
-//                         </Carousel.Caption>
-//                       </Carousel.Item>
-//                       <Carousel.Item interval={500}>
-//                         <img
-//                           className="d-block w-100"
-//                           src="https://static2.bigstockphoto.com/0/8/3/large1500/380596804.jpg"
-//                           alt="Third slide"
-//                         />
-//                         <Carousel.Caption>
-//                           <h3>Category Food</h3>
-//                         </Carousel.Caption>
-//                       </Carousel.Item>
-//                       <Carousel.Item>
-//                         <img
-//                           className="d-block w-100"
-//                           src="https://thumbs.dreamstime.com/b/cinnamon-rolls-sinabon-made-home-lying-grey-table-homemade-cakes-brown-wooden-sweet-141014176.jpg"
-//                           width="400px"
-//                           height="500px"
-//                           alt="Third slide"
-//                         />
-//                         <Carousel.Caption>
-//                           <h3>Category Food</h3>
-//                         </Carousel.Caption>
-//                       </Carousel.Item>
-//                     </Carousel>
-//                   </Link>
-//                 </div>
-//               </div>
-//             </Col>
-
-//             <Col style={{ padding: "0px 300px 0px 0px" }}>
-//               <div className="col-sm-12">
-//                 <div
-//                   className="card"
-//                   style={{
-//                     border: "solid  white 2px",
-//                     width: "400px",
-
-//                     cursor: "pointer",
-//                     marginTop: "-350px",
-//                     boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.6)",
-//                   }}
-//                 >
-//                   <Link to="/buyer/clothes">
-//                     <Carousel
-//                       onClick={() => {
-//                         console.log("clickeeed");
-//                         dispatch(getcategoryclothes());
-//                       }}
-//                     >
-//                       <Carousel.Item interval={1000} className="col-sm-6">
-//                         <img
-//                           className="d-block w-100"
-//                           src="https://www.next.co.uk/nxtcms/resource/blob/804278/b27903a48e38e6e0c04a077af12851f2/next-girls--bridesmaid-dresses-data.jpg"
-//                           width="400px"
-//                           height="500px"
-//                           alt="First slide"
-//                         />
-//                         <Carousel.Caption>
-//                           <h3>Category Clothes</h3>
-//                         </Carousel.Caption>
-//                       </Carousel.Item>
-//                       <Carousel.Item interval={500}>
-//                         <img
-//                           style={{ borderRadius: "25px" }}
-//                           className="d-block w-100"
-//                           src="https://www.landsend.com/article/best-work-from-home-clothes-men/images/feat-m.jpg"
-//                           width="400px"
-//                           height="500px"
-//                           alt="Third slide"
-//                         />
-//                         <Carousel.Caption>
-//                           <h3>Category Clothes</h3>
-//                         </Carousel.Caption>
-//                       </Carousel.Item>
-//                       <Carousel.Item>
-//                         <img
-//                           className="d-block w-100"
-//                           src="https://media.istockphoto.com/photos/women-clothes-hanging-on-hangers-clothing-rails-fashion-design-picture-id916092484?k=6&m=916092484&s=612x612&w=0&h=tUKYM82W1Vecsjeat6rl6kTnq7iCFq0JYhI2uR3VxMU="
-//                           width="400px"
-//                           height="500px"
-//                           alt="Third slide"
-//                         />
-//                         <Carousel.Caption>
-//                           <h3>Category Clothes</h3>
-//                         </Carousel.Caption>
-//                       </Carousel.Item>
-//                     </Carousel>
-//                   </Link>
-//                 </div>
-//                 <br />
-//                 <br />
-//               </div>
-//             </Col>
-//             {/* <div className="col-sm-6"  >
-
-//             <div className="card"  style={{border: "solid  white 2px",width:'500px', padding:'0px 100px 0px 100px',  cursor: 'pointer',  marginTop:"-350px",  boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.6)' }}  > */}
-//           </Row>
-//           <Container>
-//             <Row>
-//               <Col>
-//                 <div className="col-sm-6" className="container-fluid">
-//                   <div
-//                     className="card"
-//                     style={{
-//                       border: "solid  white 2px",
-//                       width: "400px",
-//                       padding: "0px 40px 0px 40px",
-//                       cursor: "pointer",
-//                       marginTop: "100px",
-//                       boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.6)",
-//                     }}
-//                   >
-//                     <Link to="/buyer/accessories">
-//                       <Carousel
-//                         onClick={() => {
-//                           console.log("clickeeed");
-//                           dispatch(getcategoryacc());
-//                         }}
-//                       >
-//                         <Carousel.Item interval={1000}>
-//                           <img
-//                             className="d-block w-100"
-//                             src="https://st3.depositphotos.com/3737897/15110/i/1600/depositphotos_151106036-stock-photo-clothing-and-accessories-for-women.jpg"
-//                             width="400px"
-//                             height="500px"
-//                             alt="First slide"
-//                           />
-//                           <Carousel.Caption>
-//                             <h3> Category Accessories</h3>
-//                           </Carousel.Caption>
-//                         </Carousel.Item>
-//                         <Carousel.Item interval={500}>
-//                           <img
-//                             className="d-block w-100"
-//                             src="https://previews.123rf.com/images/belchonock/belchonock1802/belchonock180292570/96250582-stylish-women-accessories-on-wooden-background.jpg"
-//                             width="400px"
-//                             height="500px"
-//                             alt="Third slide"
-//                           />
-//                           <Carousel.Caption>
-//                             <h3>Category Accessories</h3>
-//                           </Carousel.Caption>
-//                         </Carousel.Item>
-//                         <Carousel.Item>
-//                           <img
-//                             className="d-block w-100"
-//                             src="https://gedaramade.com/wp-content/uploads/2020/11/GiftNfab-natural-stone-hand-made-bracelets-on-GedaraMade-372x400.jpg"
-//                             width="400px"
-//                             height="500px"
-//                             alt="Third slide"
-//                           />
-//                           <Carousel.Caption>
-//                             <h3>Category Accessories</h3>
-//                           </Carousel.Caption>
-//                         </Carousel.Item>
-//                       </Carousel>
-//                     </Link>
-//                   </div>
-//                   <br />
-//                   <br />
-//                 </div>
-//               </Col>
-//               <Col>
-//                 <div className="col-sm-6">
-//                   <div
-//                     className="card"
-//                     style={{
-//                       border: "solid  white 2px",
-//                       width: "400px",
-//                       padding: "0px 40px 0px 40px",
-//                       cursor: "pointer",
-//                       marginTop: "100px",
-//                       boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.6)",
-//                     }}
-//                   >
-//                     <Link to="/buyer/babyproducts">
-//                       <Carousel
-//                         onClick={() => {
-//                           console.log("clickeeed");
-//                           dispatch(getcategorybaby());
-//                         }}
-//                       >
-//                         <Carousel.Item interval={1000}>
-//                           <img
-//                             className="d-block w-100"
-//                             src="https://www.stylishboard.com/wp-content/uploads/2013/05/fi3.jpg"
-//                             width="400px"
-//                             height="500px"
-//                             alt="First slide"
-//                           />
-//                           <Carousel.Caption>
-//                             <h3>Category Baby products</h3>
-//                           </Carousel.Caption>
-//                         </Carousel.Item>
-//                         <Carousel.Item interval={500}>
-//                           <img
-//                             className="d-block w-100"
-//                             src="https://hipdysplasia.org/wp-content/uploads/2020/05/learn-about-cause.jpg"
-//                             width="400px"
-//                             height="500px"
-//                             alt="Third slide"
-//                           />
-//                           <Carousel.Caption>
-//                             <h3>Category Baby productsl</h3>
-//                           </Carousel.Caption>
-//                         </Carousel.Item>
-//                         <Carousel.Item>
-//                           <img
-//                             className="d-block w-100"
-//                             src="https://ae01.alicdn.com/kf/H30992dcc27d7495c8498858f9b357886E/2019-Baby-Kids-Winter-Warm-Clothes-Newborn-Baby-Boy-Girl-Children-s-Solid-Hooded-Sweater-3D.jpg"
-//                             width="400pxs"
-//                             height="500px"
-//                             alt="Third slide"
-//                           />
-//                           <Carousel.Caption>
-//                             <h3>Category Baby products</h3>
-//                           </Carousel.Caption>
-//                         </Carousel.Item>
-//                       </Carousel>
-//                     </Link>
-//                   </div>
-//                   <br />
-//                   <br />
-//                 </div>
-//               </Col>
-//             </Row>
-//           </Container>
-//         </Container>
-//         {/* </div><br/><br/>
-
-//         </div>  */}
-
-//         {/* /////////////////////////////////////////////////////////////////////////////////////////////////// */}
-
-//         {/* //////////////////////////////////////////////////////////////////////////////       */}
-//       </div>

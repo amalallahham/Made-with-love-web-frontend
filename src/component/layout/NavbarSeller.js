@@ -1,10 +1,10 @@
 import React from "react";
 import "../../Style/navbar.css";
-import { Navbar, Nav, NavDropdown, Row, Col, Container } from "react-bootstrap";
+import { NavDropdown, Row, Col, Container } from "react-bootstrap";
 import "../../Style/navbar.css";
 import rose from "../../images/rose.png";
 import logo from "../../images/logo.png";
-import back from "../../images/back.jpg";
+
 
 var NavbarSeller = () => {
   var signout = () => {

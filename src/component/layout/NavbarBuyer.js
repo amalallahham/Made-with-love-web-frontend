@@ -1,7 +1,6 @@
 import React from "react";
-import { Navbar, Nav, NavDropdown, Row, Col, Container } from "react-bootstrap";
+import { NavDropdown, Row, Col, Container } from "react-bootstrap";
 import "../../Style/navbar.css";
-import { Link } from "react-router-dom";
 import heart from "../../images/heart.jpg";
 import logo from "../../images/logo.png";
 import back3 from "../../images/back3.jpg";

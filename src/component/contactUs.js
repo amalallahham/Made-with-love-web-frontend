@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Style/view.css";
-import back from "../images/back.jpg";
 import down from "../images/down.jpg";
 import heart from "../images/heart.jpg";
 import logo1 from "../images/logo1.png";
