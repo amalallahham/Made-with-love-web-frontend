@@ -510,6 +510,7 @@ function SignUpBuyer(props) {
           </Row>
         </Container>
       </div>
+      
     </div>
   );
 }
