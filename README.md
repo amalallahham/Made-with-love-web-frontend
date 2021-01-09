@@ -1,9 +1,26 @@
+# Thesis-Project-Made With Love
 
 
-  
+# Project title:
+MadeWithLove
    
-   
-     
+# The Idea of Our Project :
+Creating , Uniting  and growing a  market specifically for Homemade Products , 
+where you can :
+- You showcast your distinguished and  customized creations and products for sale 
+- You can easily  browse through these unique products and creative stores 
+- Purchase  the products that you need 
+
+# The Stack We Used :
+- Front end : ReactJS
+- Backend : Django
+- Database : MySQL
+
+
+# Logo:
+<img src= "images/logo.png" width = "100">
+![](images/logo.png)
+
      # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
