@@ -2,7 +2,6 @@ import React from "react";
 import { Button, Card, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import $ from "jquery";
 // var componentDidMount=() =>{
 //   this.deleteItems();
 // }
@@ -47,11 +46,11 @@ const ListItems = (props) => {
   //  })
   //  console.log("hhhhhhhhhhhh")
   // }
-  console.log(props);
+  console.log(props, "proooooooooooooooops");
   return (
     <div>
       <Row>
-        {props.items.map((item, i) => {
+        {JSON.parse(props.items).map((item, i) => {
           console.log(props.cat, "Liiiiiiiiis");
           return (
             <Col key={i}>
