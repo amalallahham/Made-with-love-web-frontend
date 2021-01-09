@@ -11,6 +11,7 @@ import contactUs from "../images/contactUs.jpg";
 // const player = {
 //     color : 'red',
 //     fontFamily: 'Gochi Hand'
+
 // }
 function ContactUs() {
   return (

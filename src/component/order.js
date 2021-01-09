@@ -2,16 +2,14 @@ import { Control, Form } from "react-redux-form";
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
 import NavbarBuyer from "./layout/NavbarBuyer.js";
+
+import "../Style/map.css";
+import app from "./fireConfig";
 import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 import styled from "styled-components";
 import $ from "jquery";
-import ReactNotifications from "react-notifications-component";
-import { store } from "react-notifications-component";
-import "react-notifications-component/dist/theme.css";
-// import "animate.css";
 import AutoComplete from "./AutoComplete";
 import Marker from "./Marker";
 import "../Style/map.css";
@@ -19,16 +17,20 @@ const Wrapper = styled.main`
   width: 100%;
   height: 100%;
 `;
+
 // import MyGoogleMap from './renderTheMap';
 var time = new Date().toDateString();
 var price;
 var quan;
 var total;
+var cash = false;
+var token = false;
 toast.configure();
 class Order extends React.Component {
   constructor(props) {
     super(props);
     console.log(props, "prooooops");
+    this.database = app.database().ref("notification");
     this.state = {
       data: {},
       mapApiLoaded: false,
@@ -43,9 +45,11 @@ class Order extends React.Component {
       lat: null,
       lng: null,
       show: false,
+      alerts: false,
+      credit: false,
+      token: "",
     };
   }
-
   /////////////////////////////////////////
   onMarkerInteraction = (childKey, childProps, mouse) => {
     this.setState({
@@ -145,10 +149,6 @@ class Order extends React.Component {
     console.log(this.state.lat);
   };
 
-  click() {
-    window.location = `/home`;
-  }
-
   ajax(order) {
     var link =
       "https://www.google.com/maps/search/" +
@@ -161,142 +161,182 @@ class Order extends React.Component {
     var obj = { order };
     quan = obj.order.quantity;
     obj.location = link;
+
     // location=link
-    // console.log(location, "locaaaaation");
+
     total = quan * price * 100;
     console.log(order, "ordeeeeer");
-
+    var fire = obj["store_id"] + "";
+    var that = this;
     obj["item_id"] = this.props.location.info.id;
     obj["store_id"] = this.props.location.info.store;
     obj["date"] = time;
     // obj['location'] =  this.props.location.info.location
     this.setState({ data: obj });
-    // obj["item_id"]=this.props.location.info.id
-    // obj["store_id"]=this.props.location.info.store
-    // obj['date']=time
     console.log(obj, "objjjjj");
-    $.ajax({
-      url: "http://127.0.0.1:8000/buyer/order",
-      method: "POST",
-      data: JSON.stringify(obj),
-      contentType: "application/json",
-      headers: {
-        Authorization: JSON.parse(localStorage.getItem("token"))["token"],
-      },
-      success: function () {
-        console.log("success");
-        // window.location = `/home`;
-      },
-      error: function (err) {},
-    });
-  }
-  async handleToken(token, addresses) {
-    //  var that = this;
-    price = console.log({ token, addresses }, "handle toooookeeen");
-    token.total = total;
-    const response = await axios.post(
-      "http://127.0.0.1:8000/payments/checkout",
-      
-      { token, addresses }
-      
-    );
-    console.log(response.data, "resppoooooonse");
-    // const { status } = response.data;
-    // console.log(status, "statuuuuuuuus");
-    if (response.data === "ok") {
-      toast("Success! check email for details", { type: "success" });
-      // this.ajax();
+    if (!cash) {
+      obj.is_payed = true;
+      that.setState(
+        {
+          credit: true,
+        },
+        () => {
+          $.ajax({
+            url: "http://127.0.0.1:8000/buyer/order",
+            method: "POST",
+            data: JSON.stringify(obj),
+            contentType: "application/json",
+            headers: {
+              Authorization: JSON.parse(localStorage.getItem("token"))["token"],
+            },
+            success: function () {
+              console.log("success");
+              //to show the alert that order is sent
+              that.setState({ alerts: true });
 
-      console.log("okkkkkkkk");
-      window.location = `/home`;
-     
-    } else {
-      toast("somthing went wrong", { type: "error" });
+              // window.location = `/home`;
+
+              //Notification
+              var urlRef = that.database;
+
+              urlRef.once("value", function (snapshot) {
+                var exist = false;
+                snapshot.forEach(function (childSnapshot) {
+                  childSnapshot.forEach(function (child) {
+                    // if the store id exist in firebase  increment number of orders
+                    if (
+                      Number(child.key) === that.props.location.info.storeId
+                    ) {
+                      exist = true;
+                      console.log(typeof child.val(), child.val());
+                      var x = Number(child.val()) + 1;
+                      console.log(x);
+                      that.database
+                        .child(childSnapshot.key)
+                        .set({ [child.key]: x });
+                    }
+                  });
+                });
+                // if the store id does nto exist in firebase create it and set it to 1 (first order)
+                if (!exist) {
+                  urlRef.push({ [that.props.location.info.storeId]: 1 });
+                }
+                console.log(that.state.credit);
+                if (!that.state.credit) {
+                  window.location = `/home`;
+                } else if (that.state.credit && that.state.token) {
+                  window.location = `/home`;
+                }
+              });
+            },
+            error: function (err) {},
+          });
+        }
+      );
     }
+    if (cash) {
+      obj.is_payed = false;
+      $.ajax({
+        url: "http://127.0.0.1:8000/buyer/order",
+        method: "POST",
+        data: JSON.stringify(obj),
+        contentType: "application/json",
+        headers: {
+          Authorization: JSON.parse(localStorage.getItem("token"))["token"],
+        },
+        success: function () {
+          console.log("success");
+          //to show the alert that order is sent
+          that.setState({ alerts: true });
 
-    //  var obj = this.state.data
-    //   $.ajax({
-    //     url:'http://127.0.0.1:8000/buyer/order',
-    //       method:'POST',
-    //       data:JSON.stringify(obj),
-    //       contentType: "application/json",
-    //       success:function(){
-    //         console.log('success')
-    //       },
-    //       error: function(err){
-    //         console.log(err)
-    //       }
-    //     })
+          // window.location = `/home`;
 
-    // window.location = `/home`;
+          //Notification
+          var urlRef = that.database;
+          urlRef.once("value", function (snapshot) {
+            var exist = false;
+            snapshot.forEach(function (childSnapshot) {
+              childSnapshot.forEach(function (child) {
+                // if the store id exist in firebase  increment number of orders
+                if (Number(child.key) === that.props.location.info.storeId) {
+                  exist = true;
+                  console.log(typeof child.val(), child.val());
+                  var x = Number(child.val()) + 1;
+                  console.log(x);
+                  that.database
+                    .child(childSnapshot.key)
+                    .set({ [child.key]: x });
+                }
+              });
+            });
+            // if the store id does nto exist in firebase create it and set it to 1 (first order)
+            if (!exist) {
+              urlRef.push({ [that.props.location.info.storeId]: 1 });
+            }
+
+            if (!token) window.location = `/home`;
+          });
+        },
+        error: function (err) {},
+      });
+    }
+  }
+  handleToken(token, addresses) {
+    token = true;
+    setTimeout(() => {
+      window.location = "/home";
+    }, 3000);
+    console.log({ token, addresses }, "handle toooookeeen");
+
+    // token.total = total;
+    // const response = await axios.post(
+    //   "http://127.0.0.1:8000/payments/checkout",
+    //   { token, addresses }
+    // );
+    // this.ajax()
   }
   render() {
     const { places, mapApiLoaded, mapInstance, mapApi } = this.state;
-
-    // console.log("this.props", this.props.location.info.id);
-    // var x;
-    //   {this.state.data ?  x = <Redirect to={'/seller/profile'}/>
-    //   :'not'}
-    //   console.log(this.props,'proooooops')
-    // console.log(this.props.location.info.price, 'priiiiiiiice')
     if ((this.state.show = true))
       var map = (
-        <div>
-          <div className="main-wrapper" width="50px">
-            <Wrapper className="main-wrapper">
-              {mapApiLoaded && (
-                <div className="main-wrapper">
-                  <AutoComplete
-                    map={mapInstance}
-                    mapApi={mapApi}
-                    addplace={this.addPlace}
-                  />
-                </div>
-              )}
-              <GoogleMapReact
-                center={this.state.center}
-                zoom={this.state.zoom}
-                draggable={this.state.draggable}
-                onChange={this._onChange}
-                onChildMouseDown={this.onMarkerInteraction}
-                onChildMouseUp={this.onMarkerInteractionMouseUp}
-                onChildMouseMove={this.onMarkerInteraction}
-                onChildClick={() => console.log("child click")}
-                onClick={this._onClick}
-                bootstrapURLKeys={{
-                  key: "AIzaSyDhdSw1QzkXBrYnLSt3EF3izfHEhUj6LMc",
-                  libraries: ["places", "geometry"],
-                }}
-                yesIWantToUseGoogleMapApiInternals
-                onGoogleApiLoaded={({ map, maps }) =>
-                  this.apiHasLoaded(map, maps)
-                }
-              >
-                <Marker
-                  text={this.state.address}
-                  lat={this.state.lat}
-                  lng={this.state.lng}
+        <div className="main-wrapper">
+          <Wrapper>
+            {mapApiLoaded && (
+              <div>
+                <AutoComplete
+                  map={mapInstance}
+                  mapApi={mapApi}
+                  addplace={this.addPlace}
                 />
-              </GoogleMapReact>
-              {
-                (this.state.show = true ? (
-                  <div className="info-wrapper">
-                    <div className="map-details">
-                      Latitude: <span>{this.state.lat}</span>, Longitude:{" "}
-                      <span>{this.state.lng}</span>
-                    </div>
-                    <div className="map-details">
-                      Zoom: <span>{this.state.zoom}</span>
-                    </div>
-                    <div className="map-details">
-                      Address: <span>{this.state.address}</span>
-                    </div>
-                    <button onClick={this.location}>Add My Location</button>
-                  </div>
-                ) : null)
+              </div>
+            )}
+
+            <GoogleMapReact
+              center={this.state.center}
+              zoom={this.state.zoom}
+              draggable={this.state.draggable}
+              onChange={this._onChange}
+              onChildMouseDown={this.onMarkerInteraction}
+              onChildMouseUp={this.onMarkerInteractionMouseUp}
+              onChildMouseMove={this.onMarkerInteraction}
+              onChildClick={() => console.log("child click")}
+              onClick={this._onClick}
+              bootstrapURLKeys={{
+                key: "AIzaSyDhdSw1QzkXBrYnLSt3EF3izfHEhUj6LMc",
+                libraries: ["places", "geometry"],
+              }}
+              yesIWantToUseGoogleMapApiInternals
+              onGoogleApiLoaded={({ map, maps }) =>
+                this.apiHasLoaded(map, maps)
               }
-            </Wrapper>
-          </div>
+            >
+              <Marker
+                text={this.state.address}
+                lat={this.state.lat}
+                lng={this.state.lng}
+              />
+            </GoogleMapReact>
+          </Wrapper>
         </div>
       );
 
@@ -306,13 +346,17 @@ class Order extends React.Component {
       "," +
       this.state.lng +
       "?sa=X&ved=2ahUKEwiRo7PR4frtAhXVURUIHfmeDe4Q8gEwAHoECAEQAQ";
-
-    console.log("proooooops", this.props.location.info.name);
     return (
       <div>
         <NavbarBuyer />
         <br />
+        {this.state.alerts ? (
+          <div class="alert alert-success" role="alert">
+            Your Order has been successfully submitted
+          </div>
+        ) : null}
         <br />
+
         <div
           style={{
             maxWidth: "900px",
@@ -327,13 +371,13 @@ class Order extends React.Component {
             <h4 style={{ textAlign: "center" }}>YOUR ORDER</h4>
             <br />
             <br />
-            <h5 style={{ textAlign: "center", marginTop: "40px" }}>
+            <h5 style={{ textAlign: "center" }}>
               {this.props.location.info.name}
             </h5>
           </div>
           <div className="d-flex">
             <br />
-            <div className="p-2" style={{ marginRight: "30px" }}>
+            <div>
               {/* <h5>{this.props.location.info.store}</h5><br/><br/> */}
               <br />
               <br />{" "}
@@ -360,6 +404,7 @@ class Order extends React.Component {
                   border: "2px solid gray",
                   borderRadius: "3px",
                   padding: "6px",
+                  marginLeft: "20px",
                 }}
               >
                 <label for="validationDefault01" classNameName="form-label">
@@ -375,6 +420,13 @@ class Order extends React.Component {
                   required
                 />
                 <br></br>
+                <label for="validationDefault02">Phone Number:</label>
+                <Control.text
+                  className="form-control"
+                  model="order.phoneNumber"
+                  id="order.phoneNumber"
+                  required
+                />
 
                 <label for="validationDefault02" className="form-label">
                   Location:
@@ -386,44 +438,37 @@ class Order extends React.Component {
                   required
                   value={link}
                 />
-                <button onClick={this.showMap}>Your Location</button>
+                <button type="button" onClick={this.showMap}>
+                  Your Location
+                </button>
+                {map}
 
                 <br></br>
-                <label for="validationDefault02">Phone Number:</label>
-                <Control.text
-                  className="form-control"
-                  model="order.phoneNumber"
-                  id="order.phoneNumber"
-                  required
-                />
-                <br />
-                <br />
-                <br />
-                <br />
+                <br></br>
+                <br></br>
 
                 <button
                   className="btn btn-success"
-                  onClick={this.click}
                   style={{
-                    marign: "0 auto",
                     width: "200px",
                     textAlign: "center",
-                    marginLeft: "30%",
-                    marginBottom: "50px",
+                    margin: "40px 150px 0px 150px",
+                  }}
+                  onClick={() => {
+                    cash = true;
                   }}
                 >
                   Pay Cash
                 </button>
+                {/* </Form> */}
                 <StripeCheckout
+                  type="button"
                   stripeKey="pk_test_51I2FktCNmtNvriYQGjLYu0G8wYecRexcoEiC52AMMZwsISRlg1irJgpBFMKJ2qwvFSOB48zEuxLlnRaC6lfGbMCs006oNLTZZq"
-                  token={this.handleToken}
+                  token={this.handleToken.bind(Order)}
                   amount={total}
                   name={this.props.location.info.productname}
-                  // billingAddress
-                  // shippingAddress
-                  onClick={this.ajax}
                   style={{
-                    marign: "0 auto",
+                    marign: "10px auto",
                     width: "200px",
                     textAlign: "center",
                     marginLeft: "30%",
@@ -434,11 +479,9 @@ class Order extends React.Component {
             </div>
           </div>{" "}
         </div>
-        {map}
       </div>
     );
   }
-
   //
 }
-export default Order;
+export { app, Order };

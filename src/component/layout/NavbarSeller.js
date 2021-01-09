@@ -3,8 +3,9 @@ import "../../Style/navbar.css";
 import { Navbar, Nav, NavDropdown, Row, Col, Container } from "react-bootstrap";
 import "../../Style/navbar.css";
 import rose from "../../images/rose.png";
-import logo from "../../images/logo.png";
-import back from "../../images/back.jpg";
+import logo11 from "../../images/logo11.png";
+import back3 from "../../images/back3.jpg";
+import heart from "../../images/heart.jpg";
 
 var NavbarSeller = () => {
   var signout = () => {
@@ -17,8 +18,8 @@ var NavbarSeller = () => {
       style={{
         width: "100%",
         height: "1030px",
-        backgroundImage: `url(${rose})`,
-        // backgroundRepeat: "no-repeat",
+        backgroundImage: `url(${back3})`,
+        backgroundRepeat: "no-repeat",
       }}
     >
       <Container>
@@ -37,7 +38,7 @@ var NavbarSeller = () => {
             }}
           >
             <a href="/">
-              <img src={logo} width="200" height="180" />
+              <img src={logo11} width="200" height="180" />
             </a>
           </div>
 
@@ -54,7 +55,7 @@ var NavbarSeller = () => {
             <a
               href="/home"
               style={{
-                color: "#826105",
+                color: "#FCFBED",
                 fontSize: "25px",
                 fontFamily: "Yanone Kaffeesatz",
               }}
@@ -66,7 +67,7 @@ var NavbarSeller = () => {
             <a
               href={url + ""}
               style={{
-                color: "#826105",
+                color: "#FCFBED",
                 fontSize: "25px",
                 fontFamily: "Yanone Kaffeesatz",
               }}
@@ -79,39 +80,12 @@ var NavbarSeller = () => {
             <a
               href="/orderList"
               style={{
-                color: "#826105",
+                color: "#FCFBED",
                 fontSize: "25px",
                 fontFamily: "Yanone Kaffeesatz",
               }}
             >
               View Orders
-            </a>
-          </Col>
-
-          {/* <Col style={{ padding: "0px 20px 0px 20px" }}>
-            <a
-              href="/settings"
-              style={{
-                color: "#FCFBED",
-                fontSize: "25px",
-                fontFamily: "Yanone Kaffeesatz",
-              }}
-            >
-              Settings
-            </a>
-          </Col>
-
-          <Col style={{ padding: "0px 20px 0px 20px" }}>
-            <a
-              href="/"
-              onClick={signout}
-              style={{
-                color: "#FCFBED",
-                fontSize: "25px",
-                fontFamily: "Yanone Kaffeesatz",
-              }}
-            >
-              Sign Out
             </a>
           </Col>
         </Row>
@@ -129,8 +103,7 @@ var NavbarSeller = () => {
                 <img src={heart} width="200" height="180" />
               </a>
             </div>
-          </Col> */}
-
+          </Col>{" "}
           <NavDropdown
             id="collasible-nav-dropdown"
             style={{ padding: "15px", color: "#826105" }}
@@ -150,33 +123,6 @@ var NavbarSeller = () => {
         </Row>
       </Container>
     </div>
-
-    // <div className="App">
-    //   <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" bac="red">
-    //     <Navbar.Brand href="/home">Made With Love</Navbar.Brand>
-    //     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-    //     <Navbar.Collapse id="responsive-navbar-nav">
-    //       <Nav.Link href="/home" style={{ padding: "22px 880px 0px 0px" }}>
-    //         HOME
-    //       </Nav.Link>
-    //       <Nav.Link
-    //         href={url + ""}
-    //         style={{ fontSize: "20px", padding: "15px " }}
-    //       >
-    //         Profile
-    //         {/* <i style={{fontSize:"35px" , color:'white', padding:'0px 0px 0px 30px'}} className="fas fa-user-circle"></i> */}
-    //       </Nav.Link>
-    //       <NavDropdown id="collasible-nav-dropdown" style={{ padding: "15px" }}>
-    //         <NavDropdown.Item href="/orderList"> Views Orders</NavDropdown.Item>
-    //         <NavDropdown.Item href="/settings">Setting</NavDropdown.Item>
-    //         <NavDropdown.Item href="/" onClick={signout}>
-    //           Sign Out
-    //         </NavDropdown.Item>
-    //         <NavDropdown.Divider />
-    //       </NavDropdown>
-    //     </Navbar.Collapse>
-    //   </Navbar>
-    // </div>
   );
 };
 export default NavbarSeller;

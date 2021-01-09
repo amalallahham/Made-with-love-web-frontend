@@ -67,8 +67,8 @@ render () {
                       {/* <Card.Title style={{fontWeight:'normal'}}><label style={{color:'red', fontWeight:'bold'}}>Product Name :</label> </Card.Title>
                       <Card.Text style={{fontWeight:'normal'}}><label style={{color:'red', fontWeight:'bold'}}>Description :</label> </Card.Text>
                       <Card.Text style={{fontWeight:'normal'}}><label style={{color:'red', fontWeight:'bold'}}>Product Price :</label> </Card.Text> */}
-                         <input type="comment" class="form-control" id="exampleInputComment" name='addComment'  onChange={this.onChangeHandle} aria-describedby="emailHelp" placeholder="Add Comment" style ={{width:'200px'}}></input>
-                         <button type="button" class="btn btn-danger" style ={{margin :'-50px 100px 0px 250px'}} onClick={this.submitHandle}>Danger</button>
+                         <input type="comment" className="form-control" id="exampleInputComment" name='addComment'  onChange={this.onChangeHandle} aria-describedby="emailHelp" placeholder="Add Comment" style ={{width:'200px'}}></input>
+                         <button type="button" className="btn btn-danger" style ={{margin :'-50px 100px 0px 250px'}} onClick={this.submitHandle}>Danger</button>
                    </Card.Body>
                  </Card>
                  </Col> 
