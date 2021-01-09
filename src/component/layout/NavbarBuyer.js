@@ -135,7 +135,6 @@ var NavbarBuyer = () => {
         </Row>
       </Container>
     </div>
-    
   );
 };
 export default NavbarBuyer;

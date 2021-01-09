@@ -2,7 +2,6 @@ import React from "react";
 import { Button, Card, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
 // var componentDidMount=() =>{
 //   this.deleteItems();
 // }
@@ -48,7 +47,6 @@ const ListItems = (props) => {
   //  console.log("hhhhhhhhhhhh")
   // }
   console.log(props, "proooooooooooooooops");
-
   return (
     <div>
       <Row>

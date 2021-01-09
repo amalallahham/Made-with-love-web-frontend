@@ -3,9 +3,10 @@ import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 import { toast } from "react-toastify";
 import NavbarBuyer from "./layout/NavbarBuyer.js";
+
 import "../Style/map.css";
 import app from "./fireConfig";
-import React from "react";
+import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 import styled from "styled-components";
 import $ from "jquery";
@@ -403,6 +404,7 @@ class Order extends React.Component {
                   border: "2px solid gray",
                   borderRadius: "3px",
                   padding: "6px",
+                  marginLeft: "20px",
                 }}
               >
                 <label for="validationDefault01" classNameName="form-label">

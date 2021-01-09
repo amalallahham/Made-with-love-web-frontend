@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import loogo from "../images/loogo.png";
-import { Card, Row, Col, Container } from "react-bootstrap";
+import { Card, NavDropdown, Row, Col, Container } from "react-bootstrap";
 import down from "../images/down.jpg";
 import $ from "jquery";
 import { Control, Form } from "react-redux-form";
@@ -9,6 +8,8 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import buyer2 from "../images/buyer2.jpg";
 import GoogleLogin from "react-google-login";
 import FacebookLogin from "react-facebook-login";
+import logo11 from "../images/logo11.png";
+// import store from './Store';
 
 var mapStateToProps = (state) => {
   console.log(state, "staaaaat");
@@ -74,12 +75,14 @@ var responseGoogle = (response) => {
   obj.userName = response.profileObj["givenName"];
   obj.location = "";
   obj.phoneNumber = "";
+
   console.log(obj);
   $.ajax({
     url: "http://127.0.0.1:8000/buyer/signup",
     method: "POST",
     data: JSON.stringify(obj),
     contentType: "application/json",
+
     success: function (response) {
       console.log("POST sent successfully!");
       localStorage.setItem("token", JSON.stringify(response));
@@ -97,7 +100,6 @@ var responseGoogle = (response) => {
     },
   });
 };
-
 //make sign up buyer component
 function SignUpBuyer(props) {
   //console.log(props)
@@ -163,7 +165,7 @@ function SignUpBuyer(props) {
               }}
             >
               <a href="/">
-                <img src={loogo} width="200" height="180" />
+                <img src={logo11} width="200" height="180" />
               </a>
             </div>
             <Col md="auto"></Col>
@@ -183,7 +185,7 @@ function SignUpBuyer(props) {
                 href="/"
                 style={{
                   color: "#FCFBED",
-                  fontSize: "25px",
+                  fontSize: "30px",
                   fontFamily: "Yanone Kaffeesatz",
                 }}
               >
@@ -213,14 +215,14 @@ function SignUpBuyer(props) {
               style={{
                 marginLeft: "110px",
                 marginRight: "110px",
-                marginTop: "140px",
+                marginTop: "100px",
               }}
             >
               <div
                 style={{
                   fontFamily: "Yanone Kaffeesatz",
                   float: "none",
-                  fontSize: "40px",
+                  fontSize: "55px",
                   color: "#FCFBED",
                 }}
               >
@@ -244,8 +246,8 @@ function SignUpBuyer(props) {
               style={{
                 fontFamily: "Yanone Kaffeesatz",
                 float: "none",
-                margin: "10px 500px 0px 500px",
-                fontSize: "40px",
+                margin: "-60px 900px 0px 900px",
+                fontSize: "70px",
               }}
             >
               Sign Up
@@ -255,7 +257,7 @@ function SignUpBuyer(props) {
       </div>
       <Card
         style={{
-          width: "550px",
+          width: "800px",
           margin: "200px auto",
           height: "700px",
           padding: "25px 0px 10px 25px",
@@ -277,16 +279,16 @@ function SignUpBuyer(props) {
                   class="form-label"
                   style={{
                     fontFamily: "Yanone Kaffeesatz",
-                    fontSize: "23px",
+                    fontSize: "28px",
                   }}
                 >
                   Email address
                 </label>
                 <Control.text
                   style={{
-                    width: "350px",
+                    width: "600px",
 
-                    height: "50px",
+                    height: "60px",
                   }}
                   autocomplete="off"
                   name="email"
@@ -304,16 +306,16 @@ function SignUpBuyer(props) {
                   class="form-label"
                   style={{
                     fontFamily: "Yanone Kaffeesatz",
-                    fontSize: "23px",
+                    fontSize: "28px",
                   }}
                 >
                   password
                 </label>
                 <Control.text
                   style={{
-                    width: "350px",
+                    width: "600px",
 
-                    height: "50px",
+                    height: "60px",
                   }}
                   autocomplete="off"
                   name="password"
@@ -331,16 +333,16 @@ function SignUpBuyer(props) {
                   class="form-label"
                   style={{
                     fontFamily: "Yanone Kaffeesatz",
-                    fontSize: "23px",
+                    fontSize: "28px",
                   }}
                 >
                   userName
                 </label>
                 <Control.text
                   style={{
-                    width: "350px",
+                    width: "600px",
 
-                    height: "50px",
+                    height: "60px",
                   }}
                   autocomplete="off"
                   name="userName"
@@ -358,16 +360,16 @@ function SignUpBuyer(props) {
                   class="form-label"
                   style={{
                     fontFamily: "Yanone Kaffeesatz",
-                    fontSize: "23px",
+                    fontSize: "28px",
                   }}
                 >
                   Phone Number
                 </label>
                 <Control.text
                   style={{
-                    width: "350px",
+                    width: "600px",
 
-                    height: "50px",
+                    height: "60px",
                   }}
                   autocomplete="off"
                   name="phoneNumber"
@@ -382,15 +384,16 @@ function SignUpBuyer(props) {
 
                 <div class="col-12">
                   <button
-                    type="submit"
+                    type="button"
                     style={{
                       borderRadius: "10px",
                       border: "2px solid white",
-                      fontSize: "20px",
+                      fontSize: "25px",
                       padding: "14px 28px",
                       fontFamily: "Yanone Kaffeesatz",
                       marginTop: "50px",
                     }}
+                    onClick={clickButton}
                   >
                     Sign Up
                   </button>

@@ -1,13 +1,11 @@
 import React from "react";
-import $ from "jquery";
-import { Container, Row, Col, Card, Carousel } from "react-bootstrap";
+import Carousel from "react-bootstrap/Carousel";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import rose from "../images/rose.png";
 import NavbarSeller from "./layout/NavbarSeller";
 import NavbarBuyer from "./layout/NavbarBuyer";
 import down from "../images/down.jpg";
-import app from "./fireConfig";
-import { useState, useEffect } from "react";
 var action = { type: "food_category" };
 var actionclothes = { type: "clothes_category" };
 var actionbaby = { type: "babyshower_category" };
@@ -65,110 +63,13 @@ const getcategoryacc = () => {
 // }
 
 export default function Home(props) {
-  // const dispatch = useDispatch();
-  const [data, setData] = useState([]);
-  const [populer, setData1] = useState([]);
-
-  useEffect(() => {
-    var max = 0;
-    var maxId;
-
-    var database = app.database().ref("notification");
-    var superStore;
-    database.once("value", function (snapshot) {
-      snapshot.forEach(function (childSnapshot) {
-        childSnapshot.forEach(function (child) {
-          // if the store id exist in firebase  increment number of orders
-
-          var x = Number(child.val());
-          if (x >= max) {
-            max = x;
-            maxId = child.key;
-          }
-        });
-      });
-      superStore = maxId;
-      console.log(maxId, "maaxxx");
-      $.ajax({
-        method: "GET",
-        url: "http://127.0.0.1:8000/seller/profile/" + maxId,
-        contentType: "application/json",
-        headers: {
-          Authorization: JSON.parse(localStorage.getItem("token"))["token"],
-        },
-
-        success: function (res) {
-          console.log(res);
-          setData(res);
-        },
-        error: function (err) {
-          //  setData1('noooo')
-          //  console.log(data1)
-        },
-      });
-    });
-
-    $.ajax({
-      method: "GET",
-      url: "http://127.0.0.1:8000/populer",
-      contentType: "application/json",
-      headers: {
-        Authorization: JSON.parse(localStorage.getItem("token"))["token"],
-      },
-
-      success: function (res) {
-        console.log(res);
-        //filter descendingly
-        var data = JSON.parse(res).sort(function (a, b) {
-          return b.fields.review - a.fields.review;
-        });
-
-        data = data.slice(0, 4);
-        setData1(data);
-      },
-      error: function (err) {
-        //  setData1('noooo')
-        //  console.log(data1)
-      },
-    });
-  }, [data]);
-
-  console.log(populer);
+  const dispatch = useDispatch();
   var tokenObj = JSON.parse(localStorage.getItem("token"));
   console.log(tokenObj["type"]);
   if (tokenObj.type === "buyer") var nav = <NavbarBuyer />;
   if (tokenObj.type === "seller") var nav = <NavbarSeller />;
-  //   var database = app.database().ref('notification')
-  //   var superStore ;
-  //   database.once("value", function(snapshot) {
-  //     var max=0;
-  //     var maxId
-  //     snapshot.forEach(function(childSnapshot) {
-  //       childSnapshot.forEach(function(child) {
-  //         // if the store id exist in firebase  increment number of orders
-
-  //           var x =Number(child.val())
-  //           if(x>= max ){
-  //             max=x;
-  //             maxID = child.key
-  //           }
-  //   });
-
-  //   })
-  //  superStore = maxId;
-
-  //   })
-
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "1000px",
-        backgroundImage: `url(${rose})`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-      }}
-    >
+    <div>
       {nav}
 
       <br />
@@ -189,7 +90,7 @@ export default function Home(props) {
       <br />
       <br />
       <br />
-      <Container>
+      <Container style={{ marginTop: "100px" }}>
         <Row>
           <Col>
             <div className="col-sm-12">
@@ -198,12 +99,12 @@ export default function Home(props) {
                 style={{
                   border: "solid  white 3px",
                   borderRadius: "10px",
-                  width: "500px",
-                  height: "400px",
+                  width: "400px",
+                  height: "300px",
                   cursor: "pointer",
                   marginTop: "-350px",
                   boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.6)",
-                  marginLeft: "-400px",
+                  marginLeft: "-200px",
                   transition: "width 2s",
                 }}
               >
@@ -223,8 +124,8 @@ export default function Home(props) {
                         className="d-block w-100"
                         src="https://images.unsplash.com/photo-1506224477000-07aa8a76be20?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
                         alt="Third slide"
-                        width="500px"
-                        height="400px"
+                        width="400px"
+                        height="300px"
                       />
                       <Carousel.Caption>
                         <h3>Category Food</h3>
@@ -239,8 +140,8 @@ export default function Home(props) {
                         className="d-block w-100"
                         src="https://images.unsplash.com/photo-1448131063153-f1e240f98a72?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1448&q=80"
                         alt="Third slide"
-                        width="500px"
-                        height="400px"
+                        width="400px"
+                        height="300px"
                       />
                       <Carousel.Caption>
                         <h3>Category Food</h3>
@@ -254,8 +155,8 @@ export default function Home(props) {
                         }}
                         className="d-block w-100"
                         src="https://images.unsplash.com/photo-1559622214-f8a9850965bb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1402&q=80"
-                        width="500px"
-                        height="400px"
+                        width="400px"
+                        height="300px"
                         alt="Third slide"
                       />
                       <Carousel.Caption>
@@ -274,13 +175,13 @@ export default function Home(props) {
                 style={{
                   border: "solid  white 3px",
                   borderRadius: "10px",
-                  width: "800px",
-                  height: "900px",
+                  width: "600px",
+                  height: "700px",
                   cursor: "pointer",
                   marginTop: "-350px",
                   boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.6)",
 
-                  marginLeft: "-250px",
+                  marginLeft: "-150px",
                 }}
               >
                 <Link to="/buyer/food">
@@ -299,40 +200,8 @@ export default function Home(props) {
                         className="d-block w-100"
                         src="https://images.unsplash.com/photo-1506224477000-07aa8a76be20?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
                         alt="Third slide"
-                        width="800px"
-                        height="900px"
-                      />
-                      <Carousel.Caption>
-                        <h3>Category Food</h3>
-                      </Carousel.Caption>
-                    </Carousel.Item>
-                    <Carousel.Item interval={500}>
-                      <img
-                        style={{
-                          border: "solid  white 3px",
-                          borderRadius: "10px",
-                        }}
-                        className="d-block w-100"
-                        src="https://static2.bigstockphoto.com/0/8/3/large1500/380596804.jpg"
-                        alt="Third slide"
-                        width="800px"
-                        height="900px"
-                      />
-                      <Carousel.Caption>
-                        <h3>Category Food</h3>
-                      </Carousel.Caption>
-                    </Carousel.Item>
-                    <Carousel.Item>
-                      <img
-                        style={{
-                          border: "solid  white 3px",
-                          borderRadius: "10px",
-                        }}
-                        className="d-block w-100"
-                        src="https://thumbs.dreamstime.com/b/cinnamon-rolls-sinabon-made-home-lying-grey-table-homemade-cakes-brown-wooden-sweet-141014176.jpg"
-                        width="800"
-                        height="900px"
-                        alt="Third slide"
+                        width="600px"
+                        height="700px"
                       />
                       <Carousel.Caption>
                         <h3>Category Food</h3>
@@ -350,12 +219,12 @@ export default function Home(props) {
                 style={{
                   border: "solid  white 3px",
                   borderRadius: "10px",
-                  width: "500px",
-                  height: "400px",
+                  width: "400px",
+                  height: "300px",
                   cursor: "pointer",
                   marginTop: "-350px",
                   boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.6)",
-                  marginLeft: "200px",
+                  marginLeft: "100px",
                 }}
               >
                 <Link to="/buyer/clothes">
@@ -373,8 +242,8 @@ export default function Home(props) {
                         }}
                         className="d-block w-100"
                         src="https://images.unsplash.com/photo-1534337711732-1c9ae62389e2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80"
-                        width="500px"
-                        height="400px"
+                        width="400px"
+                        height="300px"
                         alt="First slide"
                       />
                       <Carousel.Caption>
@@ -389,8 +258,8 @@ export default function Home(props) {
                         }}
                         className="d-block w-100"
                         src="https://images.unsplash.com/photo-1603321582010-d342bd5a2e07?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80"
-                        width="500px"
-                        height="400px"
+                        width="400px"
+                        height="300px"
                         alt="Third slide"
                       />
                       <Carousel.Caption>
@@ -405,8 +274,8 @@ export default function Home(props) {
                         }}
                         className="d-block w-100"
                         src="https://images.unsplash.com/photo-1560060141-7b9018741ced?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=499&q=80"
-                        width="500px"
-                        height="400px"
+                        width="400px"
+                        height="300px"
                         alt="Third slide"
                       />
                       <Carousel.Caption>
@@ -429,11 +298,11 @@ export default function Home(props) {
                 style={{
                   border: "solid  white 3px",
                   borderRadius: "10px",
-                  width: "500px",
-                  height: "400px",
-                  marginLeft: "-400px",
+                  width: "400px",
+                  height: "300px",
+                  marginLeft: "-200px",
                   cursor: "pointer",
-                  marginTop: "-400px",
+                  marginTop: "-300px",
                   boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.6)",
                 }}
               >
@@ -452,8 +321,8 @@ export default function Home(props) {
                         }}
                         className="d-block w-100"
                         src="https://images.unsplash.com/photo-1521120098171-0400b4ec1319?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8YWNjZXNzb3JpZXN8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-                        width="500px"
-                        height="400px"
+                        width="400px"
+                        height="300px"
                         alt="First slide"
                       />
                       <Carousel.Caption>
@@ -468,8 +337,8 @@ export default function Home(props) {
                         }}
                         className="d-block w-100"
                         src="https://images.unsplash.com/photo-1519431458145-1ca3d5ccd68e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Nnx8YWNjZXNzb3JpZXN8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-                        width="500px"
-                        height="400px"
+                        width="400px"
+                        height="300px"
                         alt="Third slide"
                       />
                       <Carousel.Caption>
@@ -484,8 +353,8 @@ export default function Home(props) {
                         }}
                         className="d-block w-100"
                         src="https://images.unsplash.com/photo-1551026965-10a65509886d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=716&q=80"
-                        width="500px"
-                        height="400px"
+                        width="400px"
+                        height="300px"
                         alt="Third slide"
                       />
                       <Carousel.Caption>
@@ -506,12 +375,12 @@ export default function Home(props) {
                 style={{
                   border: "solid  white 3px",
                   borderRadius: "10px",
-                  width: "500px",
-                  height: "400px",
+                  width: "400px",
+                  height: "300px",
                   cursor: "pointer",
-                  marginTop: "-400px",
+                  marginTop: "-300px",
                   boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.6)",
-                  marginLeft: "400px",
+                  marginLeft: "300px",
                   paddingBottom: "100px",
                 }}
               >
@@ -530,8 +399,8 @@ export default function Home(props) {
                         }}
                         className="d-block w-100"
                         src="https://images.unsplash.com/photo-1565058528605-670489ab6f6c?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTd8fGJhYnklMjAlMjB3b29sfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
-                        width="500px"
-                        height="400px"
+                        width="400px"
+                        height="300px"
                         alt="Third slide"
                       />
                       <Carousel.Caption>
@@ -546,8 +415,8 @@ export default function Home(props) {
                         }}
                         className="d-block w-100"
                         src="https://images.unsplash.com/photo-1560506840-ec148e82a604?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mjd8fGJhYnklMjBjbG90aGVzfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
-                        width="500px"
-                        height="400px"
+                        width="400px"
+                        height="300px"
                         alt="Third slide"
                       />
                       <Carousel.Caption>
@@ -563,8 +432,8 @@ export default function Home(props) {
                         }}
                         className="d-block w-100"
                         src="https://i1.wp.com/dadfixeseverything.com/wp-content/uploads/2019/01/wash_baby_clothes.jpg?resize=600%2C400&ssl=1"
-                        width="500px"
-                        height="400px"
+                        width="400px"
+                        height="300px"
                         alt="Third slide"
                       />
                       <Carousel.Caption>
@@ -585,8 +454,37 @@ export default function Home(props) {
       <br />
       <br />
       <br />
+      <Row>
+        <Col>
+          <hr
+            style={{
+              color: "black",
+              marginLeft: "-5px",
+              width: "90%",
+              borderWidth: "2px",
+              height: "5px",
+            }}
+          />
+        </Col>
+        <Col>
+          <h2 style={{ marginLeft: "100px" }}>Most Popular</h2>
+        </Col>
+
+        <Col>
+          {" "}
+          <hr
+            style={{
+              color: "black",
+              marginRight: "-5px",
+              width: "90%",
+              borderWidth: "2px",
+              height: "5px",
+            }}
+          />
+        </Col>
+      </Row>
       <div>
-        <Container>
+        <Container style={{ marginTop: "100px", marginRight: "250px" }}>
           <Row>
             <Col style={{ padding: "0px 200px 0px 0px" }}>
               <Card style={{ width: "25rem" }}>
