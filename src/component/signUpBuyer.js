@@ -43,14 +43,12 @@ const responseFacebook = (response) => {
   obj.userName = response.name;
   obj.location = "";
   obj.phoneNumber = "";
-
   console.log(obj);
   $.ajax({
     url: "http://127.0.0.1:8000/buyer/signup",
     method: "POST",
     data: JSON.stringify(obj),
     contentType: "application/json",
-
     success: function (response) {
       console.log("POST sent successfully!");
       localStorage.setItem("token", JSON.stringify(response));
@@ -68,7 +66,6 @@ const responseFacebook = (response) => {
     },
   });
 };
-
 var responseGoogle = (response) => {
   console.log(response, "google response");
   console.log(response.profileObj, "profiiile");
@@ -513,6 +510,7 @@ function SignUpBuyer(props) {
           </Row>
         </Container>
       </div>
+      
     </div>
   );
 }
