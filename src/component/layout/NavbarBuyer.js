@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar, Nav, NavDropdown, Row, Col, Container } from "react-bootstrap";
 import "../../Style/navbar.css";
 import heart from "../../images/heart.jpg";
-import logo1 from "../../images/logo1.png";
+import logo11 from "../../images/logo11.png";
 import back from "../../images/back.jpg";
 var NavbarBuyer = () => {
   var signout = () => {
@@ -11,10 +11,10 @@ var NavbarBuyer = () => {
   return (
     <div
       style={{
-        width: "100%",
-        height: "1030px",
         backgroundImage: `url(${back})`,
         backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        height: "800px",
       }}
     >
       <Container>
@@ -33,7 +33,7 @@ var NavbarBuyer = () => {
             }}
           >
             <a href="/">
-              <img src={logo1} width="200" height="180" />
+              <img src={logo11} width="200" height="180" />
             </a>
           </div>
           <Col md="auto">
@@ -58,6 +58,18 @@ var NavbarBuyer = () => {
               }}
             >
               Food
+            </a>
+          </Col>
+          <Col style={{ padding: "0px 20px 0px 20px" }}>
+            <a
+              href="/buyer/clothes"
+              style={{
+                color: "#FCFBED",
+                fontSize: "25px",
+                fontFamily: "Yanone Kaffeesatz",
+              }}
+            >
+              Clothes
             </a>
           </Col>
           <Col style={{ padding: "0px 20px 0px 20px" }}>
@@ -109,9 +121,9 @@ var NavbarBuyer = () => {
                 marginTop: "100px",
               }}
             >
-              <a href="/">
+              {/* <a href="/">
                 <img src={heart} width="200" height="180" />
-              </a>
+              </a> */}
             </div>
           </Col>
         </Row>

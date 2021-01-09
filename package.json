@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-icons/all-files": "^4.1.0",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
@@ -20,6 +21,8 @@
     "react-bootstrap-icons": "^1.1.0",
     "react-bootstrap-validation": "^0.1.11",
     "react-dom": "^17.0.1",
+    "react-facebook-login": "^4.1.1",
+    "react-google-login": "^5.2.2",
     "react-icons": "^4.1.0",
     "react-notifications-component": "^3.0.3",
     "react-player": "^2.7.2",
