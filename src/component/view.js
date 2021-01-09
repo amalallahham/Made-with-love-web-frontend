@@ -7,27 +7,19 @@ import back from "../images/back.jpg";
 import down from "../images/down.jpg";
 import heart from "../images/heart.jpg";
 import logo1 from "../images/logo1.png";
-
 // const player = {
 //     color : 'red',
 //     fontFamily: 'Gochi Hand'
-
 // }
 function View() {
-  var hover=(e)=>{
-
-      e.target.style.transform = "scale(1.2)";
-    
-  }
   return (
     <div>
       <div
         style={{
           width: "100%",
-          height: "1050px",
+          height: "1030px",
           backgroundImage: `url(${back})`,
           backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
         }}
       >
         <Container>
@@ -38,8 +30,8 @@ function View() {
             <div
               style={{
                 float: "none",
-                marginLeft: "auto",
-                marginRight: "auto",
+                marginLeft: "450px",
+                marginRight: "100px",
                 marginBottom: "20px",
                 marginTop: "0",
                 paddingTop: "10px",
@@ -49,14 +41,23 @@ function View() {
                 <img src={logo1} width="200" height="180" />
               </a>
             </div>
+            {/* <Col md="auto">
+              <hr style={{ color: "white", height: "50px" }} />
+            </Col> */}
+            <hr
+              style={{
+                border: "0",
+                borderTop: "1px solid rgb(0, 0, 0, 0)",
+              }}
+            />
           </Row>
-          <hr style={{ marginLeft: "20px", border: "0.5px solid white" }}></hr>
-          <Row>
-            <Col style={{ padding: "0px 20px 0px 100px" }}>
+          <hr style={{ marginLeft: "170px", border: "0.5px solid white" }}></hr>
+          <Row style={{ marginLeft: "50px" }}>
+            <Col style={{ padding: "0px 20px 0px 150px" }}>
               <a
                 href="/"
                 style={{
-                  color: "#fcfbed",
+                  color: "#FCFBED",
                   fontSize: "25px",
                   fontFamily: "Yanone Kaffeesatz",
                 }}
@@ -64,12 +65,11 @@ function View() {
                 Home
               </a>
             </Col>
-
             <Col style={{ padding: "0px 20px 0px 20px" }}>
               <a
                 href="/about"
                 style={{
-                  color: "#fcfbed",
+                  color: "#FCFBED",
                   fontSize: "25px",
                   fontFamily: "Yanone Kaffeesatz",
                 }}
@@ -77,12 +77,11 @@ function View() {
                 About Us
               </a>
             </Col>
-
             <Col style={{ padding: "0px 20px 0px 20px" }}>
               <a
                 href="/login"
                 style={{
-                  color: "#fcfbed",
+                  color: "#FCFBED",
                   fontSize: "25px",
                   fontFamily: "Yanone Kaffeesatz",
                 }}
@@ -91,7 +90,6 @@ function View() {
               </a>
             </Col>
           </Row>
-
           <Row style={{ padding: "40px" }}>
             <Col>
               <div
@@ -99,6 +97,7 @@ function View() {
                   float: "none",
                   marginLeft: "360px",
                   marginRight: "100px",
+                  marginTop: "100px",
                 }}
               >
                 <a href="/">
@@ -107,13 +106,13 @@ function View() {
               </div>
             </Col>
           </Row>
-          <Row style={{ padding: "200px 10px 0px 80px" }}>
+          <Row style={{ padding: "30px 60px 0px 150px" }}>
             <Col>
               <Link to="/seller/signup" style={{ textDecoration: "none" }}>
                 <p
                   className="mb-0"
                   style={{
-                    color: "#fcfbed",
+                    color: "#FCFBED",
                     fontSize: "30px",
                     fontFamily: "Yanone Kaffeesatz",
                     animationDuration: "1.5s",
@@ -134,7 +133,7 @@ function View() {
                 <p
                   className="mb-0"
                   style={{
-                    color: "#fcfbed",
+                    color: "#FCFBED",
                     fontSize: "30px",
                     fontFamily: "Yanone Kaffeesatz",
                   }}
@@ -147,7 +146,6 @@ function View() {
           </Row>
         </Container>
       </div>
-
       <br />
       <div style={{ padding: "150px 0px 0px 0px" }}>
         <Container>
@@ -155,12 +153,8 @@ function View() {
             <Col style={{ padding: "0px 300px 0px 0px" }}>
               <Card style={{ width: "22rem" }}>
                 <Card.Img
-                  variant="top" 
-                  
-                  onMouseEnter={(e) =>  e.target.style.transform = "scale(1.2)"}
-                  onMouseLeave={(e) =>  e.target.style.transform = "scale(1)"}
+                  variant="top"
                   src="https://i0.wp.com/www.althemist.com/zass/wp-content/uploads/2017/03/baby_cat.jpg?resize=350%2C350&ssl=1"
-                
                 />
                 <Card.Body>
                   <Card.Title>
@@ -207,7 +201,6 @@ function View() {
     paddingTop: "10px"}}>
     <p style={{fontFamily: 'Yanone Kaffeesatz',  fontSize:'50px'}}>When Life Gives You Hand Make Handmade</p>
 </div> */}
-
       <div
         style={{
           width: "100%",
@@ -221,12 +214,11 @@ function View() {
         <Container>
           <Row>
             <Col style={{ padding: "130px" }}>
-              <h3 style={{ color: "#fcfbed" }}>Have a Question?</h3>
+              <h3 style={{ color: "#FCFBED" }}>Have a Question?</h3>
               <br />
-
               <i
                 className="far fa-clock fa-2x"
-                style={{ fontSize: "20px", color: "#fcfbed" }}
+                style={{ fontSize: "20px", color: "#FCFBED" }}
               >
                 {" "}
                 Saturday - Thursday: 09:00AM - 18:30PM
@@ -235,7 +227,7 @@ function View() {
               <br />
               <i
                 class="fas fa-map-marker-alt fa-2x"
-                style={{ fontSize: "20px", color: "#fcfbed" }}
+                style={{ fontSize: "20px", color: "#FCFBED" }}
               >
                 {" "}
                 Jordan,Amman
@@ -244,7 +236,7 @@ function View() {
               <br />
               <i
                 class="fas fa-phone-alt fa-2x"
-                style={{ fontSize: "20px", color: "#fcfbed" }}
+                style={{ fontSize: "20px", color: "#FCFBED" }}
               >
                 {" "}
                 +962796720978
@@ -253,11 +245,11 @@ function View() {
               <br />
               <i
                 class="fas fa-envelope fa-2x"
-                style={{ fontSize: "20px", color: "#fcfbed" }}
+                style={{ fontSize: "20px", color: "#FCFBED" }}
               >
                 <a
                   href="mailto:lovemadewith817@gmail.com"
-                  style={{ color: "#fcfbed" }}
+                  style={{ color: "#FCFBED" }}
                 >
                   {" "}
                   Made_With_Love
@@ -265,12 +257,12 @@ function View() {
               </i>
             </Col>
             <Col style={{ padding: "130px" }}>
-              <h3 style={{ color: "#fcfbed" }}>Informations</h3>
+              <h3 style={{ color: "#FCFBED" }}>Informations</h3>
               <br />
               <Link to="/about">
                 <i
                   class="far fa-sticky-note fa-2x"
-                  style={{ fontSize: "20px", color: "#fcfbed" }}
+                  style={{ fontSize: "20px", color: "#FCFBED" }}
                 >
                   {" "}
                   About Us
@@ -281,7 +273,7 @@ function View() {
               <Link to="/contactUs">
                 <i
                   class="far fa-sticky-note fa-2x"
-                  style={{ fontSize: "20px", color: "#fcfbed" }}
+                  style={{ fontSize: "20px", color: "#FCFBED" }}
                 >
                   {" "}
                   Contact Us
@@ -296,5 +288,4 @@ function View() {
     </div>
   );
 }
-
 export default View;

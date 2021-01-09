@@ -16,7 +16,6 @@ import back3 from "../images/back3.jpg";
 import { Link } from "react-router-dom";
 import down from "../images/down.jpg";
 // import { useDispatch } from "react-redux";
-
 import ListItems from "./listItems";
 var signout = () => {
   localStorage.removeItem("token");
@@ -99,7 +98,6 @@ class SellerProfile extends React.Component {
     });
     console.log("hhhhhhhhhhhh");
   };
-
   fetchItems = (id) => {
     var that = this;
     console.log(id);
@@ -127,7 +125,6 @@ class SellerProfile extends React.Component {
     this.fetchData();
     this.fetchItems();
   };
-
   upState = (data) => {
     this.setState({
       store_name: data["fields"],
