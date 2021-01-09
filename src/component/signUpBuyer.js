@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import loogo from "../images/loogo.png";
-import { Card, NavDropdown, Row, Col, Container } from "react-bootstrap";
+import { Card, Row, Col, Container } from "react-bootstrap";
 import down from "../images/down.jpg";
 import $ from "jquery";
 import { Control, Form } from "react-redux-form";
@@ -183,7 +183,7 @@ function SignUpBuyer(props) {
                 href="/"
                 style={{
                   color: "#FCFBED",
-                  fontSize: "30px",
+                  fontSize: "25px",
                   fontFamily: "Yanone Kaffeesatz",
                 }}
               >
@@ -213,14 +213,14 @@ function SignUpBuyer(props) {
               style={{
                 marginLeft: "110px",
                 marginRight: "110px",
-                marginTop: "100px",
+                marginTop: "140px",
               }}
             >
               <div
                 style={{
                   fontFamily: "Yanone Kaffeesatz",
                   float: "none",
-                  fontSize: "55px",
+                  fontSize: "40px",
                   color: "#FCFBED",
                 }}
               >
@@ -244,8 +244,8 @@ function SignUpBuyer(props) {
               style={{
                 fontFamily: "Yanone Kaffeesatz",
                 float: "none",
-                margin: "-60px 900px 0px 900px",
-                fontSize: "70px",
+                margin: "10px 500px 0px 500px",
+                fontSize: "40px",
               }}
             >
               Sign Up
@@ -255,7 +255,7 @@ function SignUpBuyer(props) {
       </div>
       <Card
         style={{
-          width: "800px",
+          width: "550px",
           margin: "200px auto",
           height: "700px",
           padding: "25px 0px 10px 25px",
@@ -277,16 +277,16 @@ function SignUpBuyer(props) {
                   class="form-label"
                   style={{
                     fontFamily: "Yanone Kaffeesatz",
-                    fontSize: "28px",
+                    fontSize: "23px",
                   }}
                 >
                   Email address
                 </label>
                 <Control.text
                   style={{
-                    width: "600px",
+                    width: "350px",
 
-                    height: "60px",
+                    height: "50px",
                   }}
                   autocomplete="off"
                   name="email"
@@ -304,16 +304,16 @@ function SignUpBuyer(props) {
                   class="form-label"
                   style={{
                     fontFamily: "Yanone Kaffeesatz",
-                    fontSize: "28px",
+                    fontSize: "23px",
                   }}
                 >
                   password
                 </label>
                 <Control.text
                   style={{
-                    width: "600px",
+                    width: "350px",
 
-                    height: "60px",
+                    height: "50px",
                   }}
                   autocomplete="off"
                   name="password"
@@ -331,16 +331,16 @@ function SignUpBuyer(props) {
                   class="form-label"
                   style={{
                     fontFamily: "Yanone Kaffeesatz",
-                    fontSize: "28px",
+                    fontSize: "23px",
                   }}
                 >
                   userName
                 </label>
                 <Control.text
                   style={{
-                    width: "600px",
+                    width: "350px",
 
-                    height: "60px",
+                    height: "50px",
                   }}
                   autocomplete="off"
                   name="userName"
@@ -358,16 +358,16 @@ function SignUpBuyer(props) {
                   class="form-label"
                   style={{
                     fontFamily: "Yanone Kaffeesatz",
-                    fontSize: "28px",
+                    fontSize: "23px",
                   }}
                 >
                   Phone Number
                 </label>
                 <Control.text
                   style={{
-                    width: "600px",
+                    width: "350px",
 
-                    height: "60px",
+                    height: "50px",
                   }}
                   autocomplete="off"
                   name="phoneNumber"
@@ -386,7 +386,7 @@ function SignUpBuyer(props) {
                     style={{
                       borderRadius: "10px",
                       border: "2px solid white",
-                      fontSize: "25px",
+                      fontSize: "20px",
                       padding: "14px 28px",
                       fontFamily: "Yanone Kaffeesatz",
                       marginTop: "50px",

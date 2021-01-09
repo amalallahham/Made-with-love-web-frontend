@@ -2,15 +2,18 @@ import React, { useState , useEffect } from "react";
 import  ReactStars  from "react-rating-stars-component";
 import { FaStar } from "react-icons/fa";
 import $ from "jquery";
+import { Zoom } from "react-toastify";
 
 const Rate = (props) => {
   const [data, setData] = useState("");
   const [data1, setData1] = useState("");
   const [rating, setRating] = useState(0);
   const [tr10, setTr10] = useState(0);
-  const [tr20, setTr20] = useState(0);
+  const [tr20, setTr20] = useState(false);
+
 var x ;
-    console.log(props.ttt.tr1,"gdfgdfgfdgfgfgfgfgfg") 
+// var z = false ;
+    console.log(props.ttt,"gdfgdfgfdgfgfgfgfgfg") 
 
 
 
@@ -19,11 +22,12 @@ var x ;
     useEffect(()=>{
        $.ajax({
         method:'GET',
-        url: 'http://127.0.0.1:8000/seller/rate/'+props.ttt.tr1,
+        url: 'http://127.0.0.1:8000/seller/rate/'+props.ttt,
         contentType: "application/json",
         headers:{'Authorization':JSON.parse(localStorage.getItem('token'))['token']},
 
         success:function(res){
+          setTr10(1)
           setData(res)
           console.log(data)
           setData1('yess')
@@ -50,12 +54,19 @@ var x ;
       })}
 , [data1])
 
+
+
+
+
+
 const ratingChange=(rating) => {
         
-        const obj ={rate:rating, pkSeller:props.ttt.tr1}
+        const obj ={rate:rating, pkSeller:props.ttt}
+        console.log(obj)
+        setTr20(false)
         $.ajax({
             method: 'POST',
-             url:'http://127.0.0.1:8000/buyer/rating/',//fix it later
+             url:'http://127.0.0.1:8000/buyer/ratingg/',//fix it later
               data : JSON.stringify(obj),
              contentType: "application/json",
              headers:{'Authorization':JSON.parse(localStorage.getItem('token'))['token']},
@@ -76,7 +87,7 @@ const ratingChange=(rating) => {
                 setRating(5)
               }
               x =  rating
-
+              
             },
           error: function(err){
              console.log(obj)
@@ -117,12 +128,16 @@ const order =()=>{
         </label>
     
     })}
-   
-     <div>
-       <ReactStars
+  
+  <button onClick={()=>{
+    setTr20(true)
+}}>tttttt</button>
+
+{ tr20 ?<div>
+        <ReactStars
      size ={50}
    onChange={ratingChange}/> 
-</div> 
+</div> :null }
 </div>
 
   }

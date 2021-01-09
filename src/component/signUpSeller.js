@@ -1,16 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Control, Form } from "react-redux-form";
+import { Card, Row, Col, Container } from "react-bootstrap";
 import { useState } from "react";
 import $ from "jquery";
-import { Link } from "react-router-dom";
+import Seller from "../images/Seller.jpg";
 import logo from "../images/logo.png";
 import heart from "../images/heart.jpg";
-import { Card, Row, Col, Container } from "react-bootstrap";
-import Seller from "../images/Seller.jpg";
-import { storage } from "../firebase/index";
 import down from "../images/down.jpg";
+import { Link } from "react-router-dom";
+
 // import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { storage } from "./fireConfig";
 var mapStateToProps = (state) => {
   return {
     email: state.reducer.email,
@@ -115,7 +116,7 @@ function SignUpSeller(props) {
             style={{
               borderRadius: "10px",
               border: "2px solid white",
-              fontSize: "25px",
+              fontSize: "20px",
               padding: "14px 28px",
               fontFamily: "Yanone Kaffeesatz",
             }}
@@ -134,7 +135,7 @@ function SignUpSeller(props) {
           backgroundPosition: "center",
           backgroundImage: `url(${Seller})`,
           backgroundSize: "cover",
-          height: "600px",
+          height: "560px",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
 
@@ -197,7 +198,7 @@ function SignUpSeller(props) {
                 }}
               >
                 <a href="/">
-                  <img src={heart} width="180" height="150" />
+                  <img src={heart} width="150" height="120" />
                 </a>
               </div>
             </Col>
@@ -205,16 +206,16 @@ function SignUpSeller(props) {
           <Row>
             <Col
               style={{
-                marginLeft: "140px",
-                marginRight: "140px",
-                marginTop: "-80px",
+                marginLeft: "200px",
+                marginRight: "200px",
+                marginTop: "-60px",
               }}
             >
               <div
                 style={{
                   fontFamily: "Yanone Kaffeesatz",
                   float: "none",
-                  fontSize: "60px",
+                  fontSize: "40px",
                   color: "#FCFBED",
                 }}
               >
@@ -233,8 +234,8 @@ function SignUpSeller(props) {
               style={{
                 fontFamily: "Yanone Kaffeesatz",
                 float: "none",
-                margin: "-60px 900px 0px 900px",
-                fontSize: "70px",
+                margin: "10px 500px 0px 500px",
+                fontSize: "40px",
               }}
             >
               Sign Up
@@ -245,9 +246,9 @@ function SignUpSeller(props) {
 
       <Card
         style={{
-          width: "800px",
+          width: "550px",
           margin: "200px auto",
-          height: "1000px",
+          height: "930px",
           padding: "10px 0px 10px 25px",
         }}
       >
@@ -267,16 +268,16 @@ function SignUpSeller(props) {
                   class="form-label"
                   style={{
                     fontFamily: "Yanone Kaffeesatz",
-                    fontSize: "28px",
+                    fontSize: "23px",
                   }}
                 >
                   Email address
                 </label>
                 <Control.text
                   style={{
-                    width: "600px",
+                    width: "350px",
 
-                    height: "60px",
+                    height: "50px",
                   }}
                   autocomplete="off"
                   name="email"
@@ -294,16 +295,16 @@ function SignUpSeller(props) {
                   class="form-label"
                   style={{
                     fontFamily: "Yanone Kaffeesatz",
-                    fontSize: "28px",
+                    fontSize: "23px",
                   }}
                 >
                   password
                 </label>
                 <Control.text
                   style={{
-                    width: "600px",
+                    width: "350px",
 
-                    height: "60px",
+                    height: "50px",
                   }}
                   autocomplete="off"
                   name="password"
@@ -321,16 +322,16 @@ function SignUpSeller(props) {
                   class="form-label"
                   style={{
                     fontFamily: "Yanone Kaffeesatz",
-                    fontSize: "28px",
+                    fontSize: "23px",
                   }}
                 >
                   Store Name
                 </label>
                 <Control.text
                   style={{
-                    width: "600px",
+                    width: "350px",
 
-                    height: "60px",
+                    height: "50px",
                   }}
                   autocomplete="off"
                   name="storeName"
@@ -348,15 +349,16 @@ function SignUpSeller(props) {
                   class="form-label"
                   style={{
                     fontFamily: "Yanone Kaffeesatz",
-                    fontSize: "28px",
+                    fontSize: "23px",
                   }}
                 >
                   Description
                 </label>
                 <Control.text
                   style={{
-                    width: "600px",
-                    height: "60px",
+                    width: "350px",
+
+                    height: "50px",
                   }}
                   autocomplete="off"
                   name="description"
@@ -374,16 +376,16 @@ function SignUpSeller(props) {
                   class="form-label"
                   style={{
                     fontFamily: "Yanone Kaffeesatz",
-                    fontSize: "28px",
+                    fontSize: "23px",
                   }}
                 >
                   Location
                 </label>
                 <Control.text
                   style={{
-                    width: "600px",
+                    width: "350px",
 
-                    height: "60px",
+                    height: "50px",
                   }}
                   autocomplete="off"
                   name="location"
@@ -401,16 +403,16 @@ function SignUpSeller(props) {
                   class="form-label"
                   style={{
                     fontFamily: "Yanone Kaffeesatz",
-                    fontSize: "28px",
+                    fontSize: "23px",
                   }}
                 >
                   Choose Category
                 </label>
                 <select
                   style={{
-                    width: "600px",
+                    width: "350px",
 
-                    height: "60px",
+                    height: "50px",
                   }}
                   autocomplete="off"
                   name="category"
@@ -433,16 +435,16 @@ function SignUpSeller(props) {
                   class="form-label"
                   style={{
                     fontFamily: "Yanone Kaffeesatz",
-                    fontSize: "25px",
+                    fontSize: "23px",
                   }}
                 >
                   Deliver Order WithIn
                 </label>
                 <select
                   style={{
-                    width: "600px",
+                    width: "350px",
 
-                    height: "60px",
+                    height: "50px",
                   }}
                   autocomplete="off"
                   name="deliveryOrder"
@@ -474,7 +476,7 @@ function SignUpSeller(props) {
                     style={{
                       borderRadius: "10px",
                       border: "2px solid white",
-                      fontSize: "25px",
+                      fontSize: "20px",
                       padding: "14px 28px",
                       fontFamily: "Yanone Kaffeesatz",
                     }}
@@ -496,7 +498,7 @@ function SignUpSeller(props) {
                   style={{
                     borderRadius: "10px",
                     border: "2px solid white",
-                    fontSize: "25px",
+                    fontSize: "20px",
                     padding: "14px 28px",
                     fontFamily: "Yanone Kaffeesatz",
                     marginTop: "40px",

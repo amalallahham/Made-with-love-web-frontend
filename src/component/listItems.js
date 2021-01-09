@@ -47,11 +47,12 @@ const ListItems = (props) => {
   //  })
   //  console.log("hhhhhhhhhhhh")
   // }
-  console.log(props);
+  console.log(props, "proooooooooooooooops");
+
   return (
     <div>
       <Row>
-        {props.items.map((item, i) => {
+        {JSON.parse(props.items).map((item, i) => {
           console.log(props.cat, "Liiiiiiiiis");
           return (
             <Col key={i}>

@@ -173,10 +173,12 @@ class SellerProfile extends React.Component {
               </Card>
             </CardGroup>
           </Container>
-          <ListItems
-            items={this.state.items}
-            cat={this.state.data[0]["fields"].category}
-          />
+          {this.state.items ? 
+            <ListItems
+              items={this.state.items}
+              cat={this.state.data[0]["fields"].category}
+            />
+           : null}
         </div>
       );
     return (

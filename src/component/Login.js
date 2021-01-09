@@ -4,13 +4,73 @@ import React from "react";
 import { Control, Form } from "react-redux-form";
 import LoginGo from "./social/google/loginGo";
 import back3 from "../images/back3.jpg";
-import logo from "../images/logo.png";
+import loogo from "../images/loogo.png";
 import heart from "../images/heart.jpg";
 import down from "../images/down.jpg";
 import { Link } from "react-router-dom";
-import { Card, NavDropdown, Row, Col, Container } from "react-bootstrap";
+import { Card, Row, Col, Container } from "react-bootstrap";
+import app from "./fireConfig";
+
+//  import firebase from 'firebase'
+// import GoogleLogin from "./social/google/google";
+// import {app} from  "./component/order.js"
+// var mapStateToProps = (state) => {
+//   console.log(state, "staaaaat");
+//   return {
+//     name: state.catReducer.name,
+//   };
+// };
+console.log(app);
+
+if (
+  localStorage.getItem("token") &&
+  JSON.parse(localStorage.getItem("token"))["type"] === "seller" &&
+  JSON.parse(localStorage.getItem("token"))["id"] === 141
+) {
+  var database = app.database().ref("notification");
+  console.log(database);
+  var childkey;
+  var value;
+  var exist = false;
+  //  app.database().ref('notification').on("value", function(snapshot) {
+
+  //    snapshot.forEach(function(childSnapshot) {
+  //      childSnapshot.forEach(function(child) {
+
+  //        if(child.key ===JSON.parse(localStorage.getItem('token'))['id']){
+  //          exist = true ;
+  //          console.log("done")
+  //         childkey = childSnapshot.key ;
+
+  //         value =Number( child.val())
+
+  //         localStorage.setItem("not",childkey )
+  //         // localStorage.setItem("val",value )
+  //           }
+
+  //  });
+
+  //  })
+
+  //  // const data = snapshot.val();
+
+  // });
+
+  // app.database().ref('notification').child(childkey+'').on('value',  (snapshot) => {
+  // //  if (value > localStorage.getItem("not"))
+  // alert("you have " + value + "orders" ) })
+}
+var alerts;
+
 class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      alert: "",
+    };
+  }
   ajax(login) {
+    var that = this;
     $.ajax({
       method: "POST",
       url: "http://127.0.0.1:8000/login", //fix it later
@@ -20,6 +80,45 @@ class Login extends React.Component {
         localStorage.setItem("token", JSON.stringify(res));
         console.log(JSON.parse(localStorage.getItem("token")));
         var tokenObj = JSON.parse(localStorage.getItem("token"));
+
+        if (
+          localStorage.getItem("token") &&
+          JSON.parse(localStorage.getItem("token"))["type"] === "seller"
+        ) {
+          var database = app.database().ref("notification");
+          console.log(database);
+          var childkey;
+          var value;
+          var exist = false;
+          app
+            .database()
+            .ref("notification")
+            .on("value", function (snapshot) {
+              snapshot.forEach(function (childSnapshot) {
+                childSnapshot.forEach(function (child) {
+                  if (
+                    Number(child.key) ===
+                    JSON.parse(localStorage.getItem("token"))["id"]
+                  ) {
+                    console.log("iiin");
+                    exist = true;
+                    console.log("done");
+                    childkey = childSnapshot.key;
+                    value = Number(child.val());
+                    localStorage.setItem("not2", childkey + "");
+                  }
+                });
+              });
+              if (!exist) {
+                app
+                  .database()
+                  .ref("notification")
+                  .push({
+                    [JSON.parse(localStorage.getItem("token"))["id"]]: 0,
+                  });
+              }
+            });
+        }
         if (tokenObj.type === "buyer") window.location = "/home";
         //if the user if a seller
         if (tokenObj.type === "seller")
@@ -27,16 +126,25 @@ class Login extends React.Component {
       },
       error: function (err) {
         // window.location.replace('/login')
-        console.log("erroddddr:", err.responseJSON.Error);
-        alert(err.responseJSON.Error);
-        // setTimeout(() => {
-        //   alert("Email Or Password Incorrect");
-        // }, 300);
-        window.location = "/login";
+        console.log("erroddddr:", err);
+        that.setState({ alerts: err.responseText }, () => {
+          console.log(that.state.alerts);
+        });
+
+        // alert(err.responseJSON.Error);
+        setTimeout(() => {
+          window.location = "/login";
+        }, 300);
       },
     });
   }
   render() {
+    if (this.state.alerts)
+      var x = (
+        <div class="alert alert-danger" role="alert">
+          {this.state.alerts}
+        </div>
+      );
     return (
       <div>
         <div
@@ -45,7 +153,7 @@ class Login extends React.Component {
             backgroundPosition: "center",
             backgroundImage: `url(${back3})`,
             backgroundSize: "cover",
-            height: "500px",
+            height: "300px",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
 
@@ -68,7 +176,7 @@ class Login extends React.Component {
                 }}
               >
                 <a href="/">
-                  <img src={logo} width="200" height="180" />
+                  <img src={loogo} width="150" height="120" />
                 </a>
               </div>
               <Col md="auto"></Col>
@@ -88,7 +196,7 @@ class Login extends React.Component {
                   href="/"
                   style={{
                     color: "#FCFBED",
-                    fontSize: "30px",
+                    fontSize: "28px",
                     fontFamily: "Yanone Kaffeesatz",
                   }}
                 >
@@ -125,8 +233,8 @@ class Login extends React.Component {
                     float: "none",
                     marginRight: "400px",
                     marginLeft: "400px",
-                    fontSize: "70px",
-                    marginTop: "-150px",
+                    fontSize: "40px",
+                    marginTop: "-300px",
                   }}
                 >
                   Login
@@ -138,7 +246,7 @@ class Login extends React.Component {
 
         <Card
           style={{
-            width: "600px",
+            width: "500px",
             margin: "200px auto",
             height: "500px",
             padding: "60px 20px 0px 20px",
@@ -158,7 +266,7 @@ class Login extends React.Component {
                   className="form-label"
                   style={{
                     fontFamily: "Yanone Kaffeesatz",
-                    fontSize: "28px",
+                    fontSize: "25px",
                     margin: "0px 80px 0px 80px",
                   }}
                 >
@@ -175,9 +283,10 @@ class Login extends React.Component {
                   id="login.email"
                   required
                   style={{
-                    width: "400px",
+                    width: "350px",
+                   
+                    height: "50px",
                     margin: "0px 80px 0px 80px",
-                    height: "60px",
                   }}
                 />
                 <div className="valid-feedback">Looks good!</div>
@@ -188,7 +297,7 @@ class Login extends React.Component {
                   className="form-label"
                   style={{
                     fontFamily: "Yanone Kaffeesatz",
-                    fontSize: "28px",
+                    fontSize: "25px",
                     margin: "0px 80px 0px 80px",
                   }}
                 >
@@ -203,9 +312,9 @@ class Login extends React.Component {
                   id="login.password"
                   required
                   style={{
-                    width: "400px",
+                    width: "350px",
                     margin: "0px 80px 0px 80px",
-                    height: "60px",
+                    height: "50px",
                   }}
                 />
                 <div className="valid-feedback">Looks good!</div>
@@ -217,7 +326,7 @@ class Login extends React.Component {
                     style={{
                       borderRadius: "10px",
                       border: "2px solid white",
-                      fontSize: "25px",
+                      fontSize: "20px",
                       padding: "14px 28px",
                       fontFamily: "Yanone Kaffeesatz",
                       margin: "15px 60px 0px 60px",

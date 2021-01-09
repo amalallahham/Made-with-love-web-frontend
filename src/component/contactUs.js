@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../Style/view.css";
 import down from "../images/down.jpg";
 import heart from "../images/heart.jpg";
-import logo1 from "../images/logo1.png";
+import loogo from "../images/loogo.png";
 import contactUs from "../images/contactUs.jpg";
 // const player = {
 //     color : 'red',
@@ -40,7 +40,7 @@ function ContactUs() {
               }}
             >
               <a href="/">
-                <img src={logo1} width="200" height="180" />
+                <img src={loogo} width="200" height="180" />
               </a>
             </div>
           </Row>
@@ -93,7 +93,7 @@ function ContactUs() {
                 }}
               >
                 <a href="/">
-                  <img src={heart} width="200" height="180" />
+                  <img src={heart} width="150" height="120" />
                 </a>
               </div>
             </Col>
@@ -110,7 +110,7 @@ function ContactUs() {
                 style={{
                   fontFamily: "Yanone Kaffeesatz",
                   float: "none",
-                  fontSize: "80px",
+                  fontSize: "60px",
                   color: "#FCFBED",
                   width: "auto",
                   height: "auto",

@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { storage } from "../firebase";
 import { Control, Form } from "react-redux-form";
+import {  Row, Col, Container } from "react-bootstrap";
 import $ from "jquery";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import down from "../images/down.jpg";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import NavbarSeller from "./layout/NavbarSeller";
 import NavbarBuyer from "./layout/NavbarBuyer";
+
+var tokenObj = JSON.parse(localStorage.getItem("token"));
+console.log(tokenObj["type"]);
+if (tokenObj.type === "buyer") var nav = <NavbarBuyer />;
+if (tokenObj.type === "seller") var nav = <NavbarSeller />;
 function SettingProfile() {
   const [location, setLocation] = useState("");
   const [username, setUsername] = useState("");
@@ -64,19 +72,88 @@ function SettingProfile() {
 
       return (
         <div>
-          <button onClick={count}>change Password </button>
-          {showInput()}
-          <br></br>
-          <br></br>
-          <button onClick={count2}> change Location</button>
-          {locationn()}
-          <br></br>
-          <button onClick={count3}> change PhoneNumber</button>
-          {phonee()}
-          <br></br>
-          <button onClick={count4}> change userName</button>
-          {user()}
-          <br></br>
+          {nav}
+          <Row>
+            <Col>
+              <button
+                onClick={count}
+                style={{
+                  borderRadius: "10px",
+                  border: "2px solid white",
+                  fontSize: "20px",
+                  padding: "10px 25px",
+                  fontFamily: "Yanone Kaffeesatz",
+                  marginTop: "50px",
+                  width: "250px",
+                }}
+              >
+                change Password{" "}
+              </button>
+              {showInput()}
+              <br></br>
+              <br></br>
+            </Col>
+            <Col>
+              <button
+                onClick={count2}
+                style={{
+                  borderRadius: "10px",
+                  border: "2px solid white",
+                  fontSize: "20px",
+                  padding: "10px 25px",
+                  fontFamily: "Yanone Kaffeesatz",
+                  marginTop: "50px",
+                  width: "250px",
+                }}
+              >
+                {" "}
+                change Location
+              </button>
+              {locationn()}
+              <br></br>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col>
+              <button
+                onClick={count3}
+                style={{
+                  borderRadius: "10px",
+                  border: "2px solid white",
+                  fontSize: "20px",
+                  padding: "10px 25px",
+                  fontFamily: "Yanone Kaffeesatz",
+                  marginTop: "50px",
+                  width: "250px",
+                }}
+              >
+                {" "}
+                change PhoneNumber
+              </button>
+              {phonee()}
+              <br></br>
+            </Col>
+            <Col>
+              <button
+                onClick={count4}
+                style={{
+                  borderRadius: "10px",
+                  border: "2px solid white",
+                  fontSize: "20px",
+                  padding: "10px 25px",
+                  fontFamily: "Yanone Kaffeesatz",
+                  marginTop: "50px",
+                  width: "250px",
+                }}
+              >
+                {" "}
+                change userName
+              </button>
+              {user()}
+              <br></br>
+            </Col>
+          </Row>
         </div>
       );
     }
@@ -112,6 +189,12 @@ function SettingProfile() {
                   Old Password:
                 </label>
                 <Control
+                  style={{
+                    width: "200px",
+
+                    height: "40px",
+                  }}
+                  autocomplete="off"
                   type="password"
                   model="password.oldPassword"
                   id="password.oldPassword"
@@ -124,6 +207,12 @@ function SettingProfile() {
                   New Password
                 </label>
                 <Control
+                  style={{
+                    width: "200px",
+
+                    height: "40px",
+                  }}
+                  autocomplete="off"
                   type="password"
                   model="password.newPassword"
                   id="password.newPassword"
@@ -131,7 +220,15 @@ function SettingProfile() {
                   required
                 />
                 <div className="col-12">
-                  <button className="btn btn-primary" type="submit">
+                  <button
+                    style={{
+                      backgroundColor: "#edb55c",
+                      borderRadius: "10px",
+                      border: "2px solid white",
+                      padding: "10px 15px",
+                    }}
+                    type="submit"
+                  >
                     Submit
                   </button>
                 </div>
@@ -188,12 +285,27 @@ function SettingProfile() {
           <div className="col-md-3">
             <label className="form-label">New Location :</label>
             <input
+              style={{
+                width: "200px",
+
+                height: "40px",
+              }}
+              autocomplete="off"
               className="form-control"
               defaultValue={data1[0].fields.location}
               onChange={takevalue}
             />
           </div>
-          <button className="btn btn-primary" name="location" onClick={ajaxLoc}>
+          <button
+            style={{
+              backgroundColor: "#edb55c",
+              borderRadius: "10px",
+              border: "2px solid white",
+              padding: "10px 15px",
+            }}
+            name="location"
+            onClick={ajaxLoc}
+          >
             Submit
           </button>
         </div>
@@ -209,12 +321,26 @@ function SettingProfile() {
           <div className="col-md-3">
             <label className="form-label">New PhoneNumber :</label>
             <input
+              style={{
+                width: "200px",
+
+                height: "40px",
+              }}
+              autocomplete="off"
               className="form-control"
               defaultValue={data1[0].fields.phonenumber}
               onChange={takevaluePH}
             />
           </div>
-          <button className="btn btn-primary" onClick={ajaxphone}>
+          <button
+            style={{
+              backgroundColor: "#edb55c",
+              borderRadius: "10px",
+              border: "2px solid white",
+              padding: "10px 15px",
+            }}
+            onClick={ajaxphone}
+          >
             Submit
           </button>
         </div>
@@ -269,12 +395,26 @@ function SettingProfile() {
           <div className="col-md-3">
             <label className="form-label">New userName :</label>
             <input
+              style={{
+                width: "200px",
+
+                height: "40px",
+              }}
+              autocomplete="off"
               className="form-control"
               defaultValue={data1[0].fields.username}
               onChange={takevalueUN}
             />
           </div>
-          <button className="btn btn-primary" onClick={ajaxUN}>
+          <button
+            style={{
+              backgroundColor: "#edb55c",
+              borderRadius: "10px",
+              border: "2px solid white",
+              padding: "10px 15px",
+            }}
+            onClick={ajaxUN}
+          >
             Submit
           </button>
         </div>
@@ -288,25 +428,125 @@ function SettingProfile() {
     if (JSON.parse(localStorage.getItem("token"))["type"] === "seller") {
       return (
         <div>
-          <button onClick={count}>Change Password </button>
-          {showInputPass()}
-          <br></br>
-          <br></br>
-          <button onClick={count3}> Change storeName</button>
-          {storeNamee()}
-          <br></br>
-          <button onClick={count2}> Change Location</button>
-          {locationn2()}
-          <br></br>
-          <button onClick={count4}> Change Description</button>
-          {descriptionn()}
-          <br></br>
-          <button onClick={count5}> Change Deliver Order WithIn:</button>
-          {deliverrr()}
-          <br></br>
-          <button onClick={count6}> Change Your Store Image:</button>
-          {imagee()}
-          <br></br>
+          {nav}
+          <Row style={{ margin: "0px 40px 0px 40px" }}>
+            <Col>
+              <button
+                style={{
+                  borderRadius: "10px",
+                  border: "2px solid white",
+                  fontSize: "20px",
+                  padding: "10px 25px",
+                  fontFamily: "Yanone Kaffeesatz",
+                  marginTop: "50px",
+                  width: "250px",
+                }}
+                onClick={count}
+              >
+                Change Password{" "}
+              </button>
+              {showInputPass()}
+              <br></br>
+              <br></br>
+            </Col>
+            <Col>
+              <button
+                style={{
+                  borderRadius: "10px",
+                  border: "2px solid white",
+                  fontSize: "20px",
+                  padding: "10px 25px",
+                  fontFamily: "Yanone Kaffeesatz",
+                  marginTop: "50px",
+                  width: "250px",
+                }}
+                onClick={count3}
+              >
+                {" "}
+                Change storeName
+              </button>
+              {storeNamee()}
+              <br></br>
+            </Col>
+            <Col>
+              <button
+                style={{
+                  borderRadius: "10px",
+                  border: "2px solid white",
+                  fontSize: "20px",
+                  padding: "10px 25px",
+                  fontFamily: "Yanone Kaffeesatz",
+                  marginTop: "50px",
+                  width: "250px",
+                }}
+                onClick={count2}
+              >
+                {" "}
+                Change Location
+              </button>
+              {locationn2()}
+              <br></br>
+            </Col>
+          </Row>
+          <Row style={{ margin: "20px 40px 0px 40px" }}>
+            <Col>
+              <button
+                style={{
+                  borderRadius: "10px",
+                  border: "2px solid white",
+                  fontSize: "20px",
+                  padding: "10px 25px",
+                  fontFamily: "Yanone Kaffeesatz",
+                  marginTop: "50px",
+                  width: "250px",
+                }}
+                onClick={count4}
+              >
+                {" "}
+                Change Description
+              </button>
+              {descriptionn()}
+              <br></br>
+            </Col>
+            <Col>
+              <button
+                style={{
+                  borderRadius: "10px",
+                  border: "2px solid white",
+                  fontSize: "20px",
+                  padding: "10px 25px",
+                  fontFamily: "Yanone Kaffeesatz",
+                  marginTop: "50px",
+                  width: "250px",
+                }}
+                onClick={count5}
+              >
+                {" "}
+                Change Deliver Order WithIn:
+              </button>
+              {deliverrr()}
+              <br></br>
+            </Col>
+            <Col>
+              <button
+                style={{
+                  borderRadius: "10px",
+                  border: "2px solid white",
+                  fontSize: "20px",
+                  padding: "10px 25px",
+                  fontFamily: "Yanone Kaffeesatz",
+                  marginTop: "50px",
+                  width: "250px",
+                }}
+                onClick={count6}
+              >
+                {" "}
+                Change Your Store Image:
+              </button>
+              {imagee()}
+              <br></br>
+            </Col>
+          </Row>
         </div>
       );
     }
@@ -326,6 +566,12 @@ function SettingProfile() {
                   Old Password:
                 </label>
                 <Control
+                  style={{
+                    width: "200px",
+
+                    height: "40px",
+                  }}
+                  autocomplete="off"
                   type="password"
                   model="password.oldPassword"
                   id="password.oldPassword"
@@ -338,6 +584,12 @@ function SettingProfile() {
                   New Password
                 </label>
                 <Control
+                  style={{
+                    width: "200px",
+
+                    height: "40px",
+                  }}
+                  autocomplete="off"
                   type="password"
                   model="password.newPassword"
                   id="password.newPassword"
@@ -345,7 +597,15 @@ function SettingProfile() {
                   required
                 />
                 <div className="col-12">
-                  <button className="btn btn-primary" type="submit">
+                  <button
+                    style={{
+                      backgroundColor: "#edb55c",
+                      borderRadius: "10px",
+                      border: "2px solid white",
+                      padding: "10px 15px",
+                    }}
+                    type="submit"
+                  >
                     Submit
                   </button>
                 </div>
@@ -383,12 +643,26 @@ function SettingProfile() {
           <div className="col-md-3">
             <label className="form-label">New storeName :</label>
             <input
+              style={{
+                width: "200px",
+
+                height: "40px",
+              }}
+              autocomplete="off"
               className="form-control"
               defaultValue={data1[0].fields.store_name}
               onChange={takevalueSN}
             />
           </div>
-          <button className="btn btn-primary" onClick={ajaxSN}>
+          <button
+            style={{
+              backgroundColor: "#edb55c",
+              borderRadius: "10px",
+              border: "2px solid white",
+              padding: "10px 15px",
+            }}
+            onClick={ajaxSN}
+          >
             Submit
           </button>
         </div>
@@ -423,13 +697,24 @@ function SettingProfile() {
           <div className="col-md-3">
             <label className="form-label">New Location :</label>
             <input
+              style={{
+                width: "200px",
+
+                height: "40px",
+              }}
+              autocomplete="off"
               className="form-control"
               defaultValue={data1[0].fields.location}
               onChange={takevalueLoc}
             />
           </div>
           <button
-            className="btn btn-primary"
+            style={{
+              backgroundColor: "#edb55c",
+              borderRadius: "10px",
+              border: "2px solid white",
+              padding: "10px 15px",
+            }}
             name="location"
             onClick={ajaxLoca}
           >
@@ -469,12 +754,26 @@ function SettingProfile() {
           <div className="col-md-3">
             <label className="form-label">New Description :</label>
             <input
+              style={{
+                width: "200px",
+
+                height: "40px",
+              }}
+              autocomplete="off"
               className="form-control"
               defaultValue={data1[0].fields.description}
               onChange={takevalueD}
             />
           </div>
-          <button className="btn btn-primary" onClick={ajaxD}>
+          <button
+            style={{
+              backgroundColor: "#edb55c",
+              borderRadius: "10px",
+              border: "2px solid white",
+              padding: "10px 15px",
+            }}
+            onClick={ajaxD}
+          >
             Submit
           </button>
         </div>
@@ -513,7 +812,17 @@ function SettingProfile() {
         <div>
           <label className="form-label">Change Delivery Time:</label>
           <br></br>
-          <select className="form-select" onChange={takevalueDe} required>
+          <select
+            className="form-select"
+            onChange={takevalueDe}
+            required
+            style={{
+              width: "200px",
+
+              height: "40px",
+            }}
+            autocomplete="off"
+          >
             <option selected disabled value="">
               Choose The Type
             </option>
@@ -522,7 +831,16 @@ function SettingProfile() {
             <option value="Day">Day</option>
           </select>
 
-          <button className="btn btn-primary" name="location" onClick={ajaxDe}>
+          <button
+            style={{
+              backgroundColor: "#edb55c",
+              borderRadius: "10px",
+              border: "2px solid white",
+              padding: "10px 15px",
+            }}
+            name="location"
+            onClick={ajaxDe}
+          >
             Submit
           </button>
           <br></br>
@@ -556,6 +874,12 @@ function SettingProfile() {
       return (
         <div>
           <input
+            style={{
+              width: "220px",
+
+              height: "40px",
+            }}
+            autocomplete="off"
             type="file"
             className="form-control"
             aria-label="file example"
@@ -564,7 +888,12 @@ function SettingProfile() {
           />
           {tr2()}
           <button
-            className="btn btn-primary"
+            style={{
+              backgroundColor: "#edb55c",
+              borderRadius: "10px",
+              border: "2px solid white",
+              padding: "10px 15px",
+            }}
             name="location"
             onClick={ajaxImage}
           >
@@ -607,7 +936,7 @@ function SettingProfile() {
     if (image !== "") {
       return (
         <div>
-          <img src={url} />
+          <img src={url} width="200" height="180" />
           <input type="button" value="Upload" onClick={handleUpload} />
         </div>
       );
@@ -632,6 +961,92 @@ function SettingProfile() {
     <div>
       <div>{buyerSettings()}</div>
       <div>{sellerSettings()}</div>
+
+      <div
+        style={{
+          width: "100%",
+          marginTop: "150px",
+          height: "600px",
+          backgroundImage: `url(${down})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      >
+        <Container>
+          <Row>
+            <Col style={{ padding: "130px" }}>
+              <h3 style={{ color: "#fcfbed" }}>Have a Question?</h3>
+              <br />
+
+              <i
+                className="far fa-clock fa-2x"
+                style={{ fontSize: "20px", color: "#fcfbed" }}
+              >
+                {" "}
+                Saturday - Thursday: 09:00AM - 18:30PM
+              </i>
+              <br />
+              <br />
+              <i
+                class="fas fa-map-marker-alt fa-2x"
+                style={{ fontSize: "20px", color: "#fcfbed" }}
+              >
+                {" "}
+                Jordan,Amman
+              </i>
+              <br />
+              <br />
+              <i
+                class="fas fa-phone-alt fa-2x"
+                style={{ fontSize: "20px", color: "#fcfbed" }}
+              >
+                {" "}
+                +962796720978
+              </i>
+              <br />
+              <br />
+              <i
+                class="fas fa-envelope fa-2x"
+                style={{ fontSize: "20px", color: "#fcfbed" }}
+              >
+                <a
+                  href="mailto:lovemadewith817@gmail.com"
+                  style={{ color: "#fcfbed" }}
+                >
+                  {" "}
+                  Made_With_Love
+                </a>
+              </i>
+            </Col>
+            <Col style={{ padding: "130px" }}>
+              <h3 style={{ color: "#fcfbed" }}>Informations</h3>
+              <br />
+              <Link to="/about">
+                <i
+                  class="far fa-sticky-note fa-2x"
+                  style={{ fontSize: "20px", color: "#fcfbed" }}
+                >
+                  {" "}
+                  About Us
+                </i>
+              </Link>
+              <br />
+              <br />
+              <Link to="/contactUs">
+                <i
+                  class="far fa-sticky-note fa-2x"
+                  style={{ fontSize: "20px", color: "#fcfbed" }}
+                >
+                  {" "}
+                  Contact Us
+                </i>
+              </Link>
+              <br />
+              <br />
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </div>
   );
 }
