@@ -1,4 +1,4 @@
-//import { connect } from 'react-redux';
+
 import $ from "jquery";
 import React from "react";
 import { Control, Form } from "react-redux-form";
