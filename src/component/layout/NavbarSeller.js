@@ -4,7 +4,7 @@ import { Navbar, Nav, NavDropdown, Row, Col, Container } from "react-bootstrap";
 import "../../Style/navbar.css";
 import rose from "../../images/rose.png";
 import logo11 from "../../images/logo11.png";
-import back from "../../images/back.jpg";
+import back3 from "../../images/back3.jpg";
 import heart from "../../images/heart.jpg";
 
 var NavbarSeller = () => {
@@ -17,9 +17,9 @@ var NavbarSeller = () => {
     <div
       style={{
         width: "100%",
-        height: "1000px",
-        backgroundImage: `url(${back})`,
-        // backgroundRepeat: "no-repeat",
+        height: "1030px",
+        backgroundImage: `url(${back3})`,
+        backgroundRepeat: "no-repeat",
       }}
     >
       <Container>

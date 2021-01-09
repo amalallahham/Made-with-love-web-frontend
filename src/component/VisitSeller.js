@@ -4,6 +4,7 @@ import { Container, CardGroup, Card, Row, Col } from "react-bootstrap";
 import VisitItems from "./VisitItem";
 import NavbarSeller from "./layout/NavbarSeller";
 import { useParams } from "react-router-dom";
+import Rate from "./rate";
 const styles = {
   card: {
     backgroundColor: "#B7E0F2",
@@ -110,6 +111,7 @@ class VisitSeller extends React.Component {
                         Delievery Time :
                         {this.state.data[0]["fields"].delivery_time}
                       </Card.Text>
+                      <Rate ttt={this.state.data[0].pk} />
                     </Card.Body>
                   </Col>
                 </Row>

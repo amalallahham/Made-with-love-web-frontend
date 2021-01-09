@@ -3,7 +3,7 @@ import { Navbar, Nav, NavDropdown, Row, Col, Container } from "react-bootstrap";
 import "../../Style/navbar.css";
 import heart from "../../images/heart.jpg";
 import logo11 from "../../images/logo11.png";
-import back from "../../images/back.jpg";
+import back3 from "../../images/back3.jpg";
 var NavbarBuyer = () => {
   var signout = () => {
     localStorage.removeItem("token");
@@ -11,10 +11,10 @@ var NavbarBuyer = () => {
   return (
     <div
       style={{
-        backgroundImage: `url(${back})`,
+        backgroundImage: `url(${back3})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
-        height: "800px",
+        height: "500px",
       }}
     >
       <Container>
@@ -25,7 +25,7 @@ var NavbarBuyer = () => {
           <div
             style={{
               float: "none",
-              marginLeft: "450px",
+              marginLeft: "100px",
               marginRight: "100px",
               marginBottom: "20px",
               marginTop: "0",
@@ -36,17 +36,8 @@ var NavbarBuyer = () => {
               <img src={logo11} width="200" height="180" />
             </a>
           </div>
-          <Col md="auto">
-            <hr style={{ color: "white", height: "50px" }} />
-          </Col>
-          <hr
-            style={{
-              border: "0",
-              borderTop: "1px solid rgba(0, 0, 0, 0.1)",
-            }}
-          />
         </Row>
-        <hr style={{ marginLeft: "170px", border: "0.5px solid white" }}></hr>
+        <hr style={{ marginLeft: "100px", border: "0.5px solid #FCFBED" }}></hr>
         <Row style={{ marginLeft: "90px" }}>
           <Col style={{ padding: "0px 20px 0px 150px" }}>
             <a
@@ -96,7 +87,6 @@ var NavbarBuyer = () => {
               Baby Stuff
             </a>
           </Col>
-
           <Col>
             <NavDropdown
               id="collasible-nav-dropdown"
@@ -129,7 +119,6 @@ var NavbarBuyer = () => {
         </Row>
       </Container>
     </div>
-
     // <div className="App">
     //   <Navbar
     //     collapseOnSelect

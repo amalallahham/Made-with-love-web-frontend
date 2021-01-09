@@ -2,7 +2,7 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import rose from "../images/rose.png";
 import { Container, Row, Col, Button, Dropdown, Card } from "react-bootstrap";
-import down from "../images/down.jpg";
+import down3 from "../images/down3.jpg";
 export default function ItemList(props) {
   console.log(props, "iteeeem props");
 
@@ -78,7 +78,7 @@ export default function ItemList(props) {
           width: "100%",
           marginTop: "150px",
           height: "600px",
-          backgroundImage: `url(${down})`,
+          backgroundImage: `url(${down3})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
         }}

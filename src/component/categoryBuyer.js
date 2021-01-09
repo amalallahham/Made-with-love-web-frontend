@@ -164,9 +164,6 @@ class CatBuyer extends Component {
         console.log(this.state.data);
       }
     );
-    // this.props.store.dispatch(this.disp(action))
-    // console.log("filtereddataaa", this.props)
-    // render it
   };
   render() {
     console.log("prooops", this.props.cat);
@@ -176,75 +173,70 @@ class CatBuyer extends Component {
       filter = (
         <div>
           <div
-            className=" p-2  bg-light border-right"
+            className="   bg-light border-right"
             style={{
               marginTop: "70px",
+              height: "100px",
             }}
           >
             <Container>
               <Row>
                 <Col>
-                  <label style={{ textAlign: "center" }}>
-                    Select a Gender{" "}
-                  </label>
+                  <select
+                    class="form-control "
+                    onChange={this.handleClothesGender}
+                    style={{ width: "200px", marginTop: "20px" }}
+                  >
+                    <option onChange={this.handleClothesGender}>
+                      Select a gender
+                    </option>
+                    <option value="Female" onChange={this.handleClothesGender}>
+                      Femal
+                    </option>
+                    <option value="Male" onChange={this.handleClothesGender}>
+                      Male
+                    </option>
+                  </select>
                 </Col>
-                <br />
-                <ToggleButtonGroup type="radio" name="options">
-                  <ToggleButton
-                    className="btn-dark"
-                    style={{ width: "200px" }}
-                    value="Female"
-                    onChange={this.handleClothesGender}
-                    style={{ marginLeft: "-500px", marginRight: "600px" }}
-                  >
-                    Women
-                  </ToggleButton>
 
-                  <ToggleButton
-                    className="btn-dark"
-                    value="Male"
-                    onChange={this.handleClothesGender}
-                    style={{ marginLeft: "-500px", marginRight: "700px" }}
-                  >
-                    Men
-                  </ToggleButton>
-                </ToggleButtonGroup>
-              </Row>
-
-              <Row style={{ marginTop: "50px" }}>
                 <Col>
-                  <label style={{ textAlign: "center" }}>Select a Size </label>
+                  <select
+                    class="form-control "
+                    onChange={this.handleClothesSize}
+                    style={{
+                      width: "200px",
+                      marginTop: "20px",
+                      marginLeft: "-100px",
+                    }}
+                  >
+                    <option onChange={this.handleClothesSize}>
+                      Select a size
+                    </option>
+                    <option value="S" onChange={this.handleClothesSize}>
+                      S
+                    </option>
+                    <option value="M" onChange={this.handleClothesSize}>
+                      M
+                    </option>
+                    <option value="L" onChange={this.handleClothesSize}>
+                      L
+                    </option>
+                  </select>
                 </Col>
-                <br />
-                <ToggleButtonGroup type="radio" name="options">
-                  <ToggleButton
-                    className="btn-dark"
-                    style={{ width: "200px" }}
-                    value="S"
-                    onChange={this.handleClothesSize}
-                    style={{ marginLeft: "-50px", marginRight: "150px" }}
+                <Col>
+                  <button
+                    className="btn btn-danger"
+                    style={{
+                      width: "200px",
+                      textAlign: "center",
+                      margin: "0 auto",
+                      marginTop: "20px",
+                    }}
+                    onClick={this.filter}
                   >
-                    S
-                  </ToggleButton>
-
-                  <ToggleButton
-                    className="btn-dark"
-                    value="M"
-                    onChange={this.handleClothesSize}
-                    style={{ marginLeft: "-100px", marginRight: "500px" }}
-                  >
-                    M
-                  </ToggleButton>
-
-                  <ToggleButton
-                    className="btn-dark"
-                    value="L"
-                    onChange={this.handleClothesSize}
-                    style={{ marginLeft: "-400px", marginRight: "600px" }}
-                  >
-                    L
-                  </ToggleButton>
-                </ToggleButtonGroup>
+                    filter
+                  </button>
+                </Col>
               </Row>
             </Container>
           </div>
@@ -263,31 +255,36 @@ class CatBuyer extends Component {
             <Container>
               <Row>
                 <Col>
-                  <label style={{ textAlign: "center" }}>
-                    Select a Category{" "}
-                  </label>
+                  <select
+                    class="form-control "
+                    onChange={this.handlefood}
+                    style={{ width: "200px", marginTop: "20px" }}
+                  >
+                    <option onChange={this.handlefood}>
+                      Select a category
+                    </option>
+                    <option value="Sweet" onChange={this.handlefood}>
+                      Sweet
+                    </option>
+                    <option value="Salty" onChange={this.handlefood}>
+                      Salty
+                    </option>
+                  </select>
                 </Col>
-                <br />
-                <ToggleButtonGroup type="radio" name="options">
-                  <ToggleButton
-                    className="btn-dark"
-                    style={{ width: "200px" }}
-                    value="Salty"
-                    onChange={this.handlefood}
-                    style={{ marginLeft: "-500px", marginRight: "600px" }}
+                <Col>
+                  <button
+                    className="btn btn-danger"
+                    style={{
+                      width: "200px",
+                      textAlign: "center",
+                      margin: "0 auto",
+                      marginTop: "20px",
+                    }}
+                    onClick={this.filter}
                   >
-                    Salty
-                  </ToggleButton>
-
-                  <ToggleButton
-                    className="btn-dark"
-                    value="Sweet"
-                    onChange={this.handlefood}
-                    style={{ marginLeft: "-500px", marginRight: "700px" }}
-                  >
-                    Sweet
-                  </ToggleButton>
-                </ToggleButtonGroup>
+                    filter
+                  </button>
+                </Col>
               </Row>
             </Container>
           </div>
@@ -307,31 +304,36 @@ class CatBuyer extends Component {
             <Container>
               <Row>
                 <Col>
-                  <label style={{ textAlign: "center" }}>
-                    Select the Material{" "}
-                  </label>
+                  <select
+                    class="form-control "
+                    onChange={this.handleClothesGender}
+                    style={{ width: "200px", marginTop: "20px" }}
+                  >
+                    <option onChange={this.handleacc}>
+                      Select the material
+                    </option>
+                    <option value="Gold" onChange={this.handleacc}>
+                      Gold
+                    </option>
+                    <option value="Selver" onChange={this.handleacc}>
+                      Selver
+                    </option>
+                  </select>
                 </Col>
-                <br />
-                <ToggleButtonGroup type="radio" name="options">
-                  <ToggleButton
-                    className="btn-dark"
-                    style={{ width: "200px" }}
-                    value="Gold"
-                    onChange={this.handleacc}
-                    style={{ marginLeft: "-500px", marginRight: "600px" }}
+                <Col>
+                  <button
+                    className="btn btn-danger"
+                    style={{
+                      width: "200px",
+                      textAlign: "center",
+                      margin: "0 auto",
+                      marginTop: "20px",
+                    }}
+                    onClick={this.filter}
                   >
-                    Gold
-                  </ToggleButton>
-
-                  <ToggleButton
-                    className="btn-dark"
-                    value="Silver"
-                    onChange={this.handleacc}
-                    style={{ marginLeft: "-500px", marginRight: "700px" }}
-                  >
-                    Silver
-                  </ToggleButton>
-                </ToggleButtonGroup>
+                    filter
+                  </button>
+                </Col>
               </Row>
             </Container>
           </div>
@@ -350,31 +352,36 @@ class CatBuyer extends Component {
             <Container>
               <Row>
                 <Col>
-                  <label style={{ textAlign: "center" }}>
-                    Select a gender{" "}
-                  </label>
+                  <select
+                    class="form-control "
+                    onChange={this.handlebaby}
+                    style={{ width: "200px", marginTop: "20px" }}
+                  >
+                    <option onChange={this.handleClothesGender}>
+                      Select a gender
+                    </option>
+                    <option value="Female" onChange={this.handlebaby}>
+                      Femal
+                    </option>
+                    <option value="Male" onChange={this.handlebaby}>
+                      Male
+                    </option>
+                  </select>
                 </Col>
-                <br />
-                <ToggleButtonGroup type="radio" name="options">
-                  <ToggleButton
-                    className="btn-dark"
-                    style={{ width: "200px" }}
-                    value="Female"
-                    onChange={this.handlebaby}
-                    style={{ marginLeft: "-500px", marginRight: "600px" }}
+                <Col>
+                  <button
+                    className="btn btn-danger"
+                    style={{
+                      width: "200px",
+                      textAlign: "center",
+                      margin: "0 auto",
+                      marginTop: "20px",
+                    }}
+                    onClick={this.filter}
                   >
-                    Girle
-                  </ToggleButton>
-
-                  <ToggleButton
-                    className="btn-dark"
-                    value="Male"
-                    onChange={this.handlebaby}
-                    style={{ marginLeft: "-500px", marginRight: "700px" }}
-                  >
-                    Boy
-                  </ToggleButton>
-                </ToggleButtonGroup>
+                    filter
+                  </button>
+                </Col>
               </Row>
             </Container>
           </div>
@@ -396,8 +403,8 @@ class CatBuyer extends Component {
           <Container>
             <div>
               {filter}
-              <br />
-              <button
+
+              {/* <button
                 className="btn btn-danger"
                 style={{
                   width: "200px",
@@ -407,7 +414,7 @@ class CatBuyer extends Component {
                 onClick={this.filter}
               >
                 filter
-              </button>
+              </button> */}
             </div>
           </Container>
 
